@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="member">
+  
+		<!-- 회원가입 -->
+		<insert id="memberInsert">
+			INSERT INTO fila_member 
+            ( 
+                   userId, 
+                   userPw, 
+                   userName, 
+                   userTel, 
+                   rgdate 
+            ) 
+            VALUES 
+            ( 
+                   #{userId}, 
+                   #{userPw}, 
+                   #{userName}, 
+                   #{userTel}, 
+                   now() 
+            );
+		</insert>
+		
+  		<!-- 로그인 -->
+		<select id="memberLogin" resultType="com.fila.shop.dto.MemberDTO">
+			SELECT userId,
+			       userPw,
+			       userName,
+			       userTel,
+			       userAdd1,
+			       userAdd2,
+			       userAdd3,
+			       rgdate,
+			       verify
+			FROM   fila_member
+			WHERE  userId = #{userId}; 
+		</select>
+		
+		<!-- 아이디체크 -->
+		<select id="idCheck" resultType="com.fila.shop.dto.MemberDTO">
+			SELECT userId 
+			FROM   fila_member
+			WHERE  userId = #{userId};
+		</select>
+		
+</mapper>
