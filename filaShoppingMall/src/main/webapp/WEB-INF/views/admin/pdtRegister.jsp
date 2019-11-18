@@ -10,14 +10,14 @@
 <body>
 	<div class="nav_ad">
 		<ul>
-			<li><a href="${path}/admin/pdtRegister">상풍등록</a></li>
+			<li>상풍등록</li>
 			<li>상품목록</li>
 			<li>상품소감</li>
 			<li>유저목록</li>
 		</ul>
 	</div>
 	<div class="container_ad">
-		
+		상품등록창
 	</div>
 	<div class="footer_ad">
 	

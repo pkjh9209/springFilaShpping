@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="admin">
+ 	<select id="category" resultType="com.fila.shop.dto.CategoryDTO">
+	 	SELECT CASE WHEN LEVEL-1 > 0 then CONCAT(CONCAT(REPEAT('    ', level  - 1)), ani.cateName)
+	                 ELSE ani.cateName
+	           END AS cateName
+			      , ani.cateCode
+			      , ani.cateCodeRef
+			      , fnc.level
+			   FROM
+			      (SELECT fnc_hierarchi() AS cateCode, @level AS level
+			         FROM (SELECT @start_with:=0, @cateCode:=@start_with, @level:=0) vars
+		             JOIN fila_category
+		            WHERE @cateCode IS NOT NULL) fnc
+		       JOIN fila_category ani ON fnc.cateCode = ani.cateCode;
+	 </select>      
+ </mapper>
