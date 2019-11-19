@@ -4,23 +4,23 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="admin">
  
-	<!-- 카테고리조회 -->	
+		<!-- 카테고리조회 -->	
 		<select id="category" resultType="com.fila.shop.dto.CategoryDTO">
-			SELECT CASE WHEN LEVEL-1 > 0 then CONCAT(CONCAT(REPEAT('    ', level  - 1)), ani.cateName)
-	                 ELSE ani.cateName
-	           END AS cateName
-			      , ani.cateCode
-			      , ani.cateCodeRef
-			      , fnc.level
-			   FROM
-			      (SELECT fnc_hierarchi() AS cateCode, @level AS level
-			         FROM (SELECT @start_with:=0, @cateCode:=@start_with, @level:=0) vars
-		             JOIN fila_category
-		            WHERE @cateCode IS NOT NULL) fnc
-		       JOIN fila_category ani ON fnc.cateCode = ani.cateCode;
+	        SELECT CASE WHEN LEVEL-1 > 0 then CONCAT(CONCAT(REPEAT('    ', level  - 1)), ani.cateName)
+                  ELSE ani.cateName
+            END AS cateName
+		       , ani.cateCode
+		       , ani.cateCodeRef
+		       , fnc.level
+		    FROM
+		       (SELECT fnc_hierarchi() AS cateCode, @level AS level
+		          FROM (SELECT @start_with:=0, @cateCode:=@start_with, @level:=0) vars
+	              JOIN fila_category
+	              WHERE @cateCode IS NOT NULL) fnc
+	        JOIN fila_category ani ON fnc.cateCode = ani.cateCode
 		</select>
 		
-	 <!-- 상품 등록 -->
+	 	<!-- 상품 등록 -->
 		<insert id="pdtRegister">
 			INSERT INTO fila_product
 	            (
@@ -29,6 +29,7 @@
 		             pdtVolume,
 		             pdtPrice,
 		             pdtDes,
+		             pdtSection,
 		             rgdate
 	             )
 			VALUES     
@@ -38,8 +39,55 @@
 		            #{pdtVolume},
 		            #{pdtPrice},
 		            #{pdtDes},
-		            Now()
-	            ); 
+		            #{pdtSection},
+		            now()
+	            )
 		</insert>
+		
+		<!-- 상품 목록 -->
+		<select id="pdtList" resultType="com.fila.shop.dto.ProductDTO">
+			SELECT pdtNum,
+			       pdtName,
+			       cateCode,
+			       pdtVolume,
+			       pdtPrice,
+			       rgdate
+			FROM   fila_product
+			ORDER  BY pdtNum DESC
+		</select>
+		
+		<!-- 상품 내용 보기 -->
+		<select id="pdtView" resultType="com.fila.shop.dto.ProductDTO">
+			SELECT pdtNum,
+			       pdtName,
+			       cateCode,
+			       pdtVolume,
+			       pdtPrice,
+			       pdtDes,
+			       pdtImg,
+			       pdtSection,
+			       rgdate
+			FROM   fila_product
+			WHERE  pdtNum = #{pdtNum}
+		</select>
+		<!-- 상품수정 -->
+		<update id="pdtUpdate">
+			UPDATE  fila_product
+			SET
+					pdtName = #{pdtName},
+					cateCode = #{cateCode},
+					pdtVolume = #{pdtVolume},
+					pdtDes = #{pdtDes},
+					pdtPrice = #{pdtPrice},
+					pdtSection = #{pdtSection},
+					rgdate = now()
+			WHERE   pdtNum = #{pdtNum}
+		</update>
+		<!-- 상품 삭제 -->
+		<delete id="pdtDelete">
+			 DELETE
+			     fila_product
+			 WHERE pdtNum = #{pdtNum}
+		</delete>
 		
  </mapper>

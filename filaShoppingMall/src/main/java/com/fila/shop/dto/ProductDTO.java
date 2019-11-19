@@ -15,5 +15,6 @@ public class ProductDTO {
 	private int pdtPrice;
 	private String pdtDes;
 	private String pdtImg;
+	private String pdtSection;
 	private String rgdate;
 }

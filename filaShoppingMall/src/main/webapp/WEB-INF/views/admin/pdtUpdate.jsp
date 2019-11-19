@@ -59,6 +59,13 @@
 	});
 </script>
 <script type="text/javascript">
+	$(document).ready(function(){
+	// 상품 수정 소분류 값 바로 뜨게 하는기능 추후에 수정하기	
+		$("#category01 option:contains('${pdtSection}')").prop("selected", true); 
+	});
+</script>
+
+<script type="text/javascript">
 	//카테고리 대분류 값 저장
 	$(document).ready(function(){
 	    $("#category01").on("change", function(){
@@ -67,11 +74,12 @@
 	    });
 	});
 </script>
+
 </head>
 <body>
 	<%@include file ="adminNav.jsp" %>
 	<div class="container_ad col-sm-9 float-right">
-		<form action="${path}/admin/pdtRegisterProc" method="post">
+		<form action="${path}/admin/pdtUpdateProc" method="post">
 			<label>1차분류</label>
 			<input id="pdtSection" type="hidden" name="pdtSection" value="">
 			<select id="category01" class="catecory01">
@@ -81,24 +89,25 @@
 			<select id="category02" class="category02" name="cateCode">
 				<option value="">전체</option>
 			</select>
-			
+			<input type="hidden" name="pdtNum" value="${viewPd.pdtNum}"/>
 			<div>
 				<p>상품명</p>
-				<input type="text" name="pdtName"/>
+				<input type="text" name="pdtName" value="${viewPd.pdtName}"/>
 			</div>
 			<div>
 				<p>상품 수량</p>
-				<input type="text" name="pdtVolume"/>
+				<input type="text" name="pdtVolume" value="${viewPd.pdtVolume}"/>
 			</div>
 			<div>
 				<p>상품 가격</p>
-				<input type="text" name="pdtPrice"/>
+				<input type="text" name="pdtPrice" value="${viewPd.pdtPrice}"/>
 			</div>
 			<div>
 				<p>상품 소개</p>
-				<textarea rows="30" cols="20" name="pdtDes"></textarea>
+				<textarea rows="30" cols="20" name="pdtDes">${viewPd.pdtDes}</textarea>
 			</div>
-			<input type="submit" value="상품등록하기">
+			<input type="submit" value="수정하기">
+			<button id="up_back_btn" type="button" onclick="history.go(-1)">취소</button>
 		</form>
 	</div>
 	<div class="footer_ad">
