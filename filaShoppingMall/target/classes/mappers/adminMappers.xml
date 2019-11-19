@@ -3,8 +3,10 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="admin">
- 	<select id="category" resultType="com.fila.shop.dto.CategoryDTO">
-	 	SELECT CASE WHEN LEVEL-1 > 0 then CONCAT(CONCAT(REPEAT('    ', level  - 1)), ani.cateName)
+ 
+	<!-- 카테고리조회 -->	
+		<select id="category" resultType="com.fila.shop.dto.CategoryDTO">
+			SELECT CASE WHEN LEVEL-1 > 0 then CONCAT(CONCAT(REPEAT('    ', level  - 1)), ani.cateName)
 	                 ELSE ani.cateName
 	           END AS cateName
 			      , ani.cateCode
@@ -16,5 +18,28 @@
 		             JOIN fila_category
 		            WHERE @cateCode IS NOT NULL) fnc
 		       JOIN fila_category ani ON fnc.cateCode = ani.cateCode;
-	 </select>      
+		</select>
+		
+	 <!-- 상품 등록 -->
+		<insert id="pdtRegister">
+			INSERT INTO fila_product
+	            (
+		             pdtName,
+		             cateCode,
+		             pdtVolume,
+		             pdtPrice,
+		             pdtDes,
+		             rgdate
+	             )
+			VALUES     
+				(
+					#{pdtName},
+		            #{cateCode},
+		            #{pdtVolume},
+		            #{pdtPrice},
+		            #{pdtDes},
+		            Now()
+	            ); 
+		</insert>
+		
  </mapper>

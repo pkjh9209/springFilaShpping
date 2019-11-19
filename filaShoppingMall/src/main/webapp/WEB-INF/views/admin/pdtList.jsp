@@ -10,7 +10,7 @@
 	<body>
 		<%@include file ="adminNav.jsp" %>
 		<div class="container_ad">
-			<h1>어드민 페이지입니다.</h1>
+			<h1>상품리스트 페이지입니다.</h1>
 		</div>
 		<div class="footer_ad">
 		

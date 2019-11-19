@@ -12,6 +12,7 @@ public class ProductDTO {
 	private String pdtName;
 	private String cateCode;
 	private int	pdtVolume;
+	private int pdtPrice;
 	private String pdtDes;
 	private String pdtImg;
 	private String rgdate;

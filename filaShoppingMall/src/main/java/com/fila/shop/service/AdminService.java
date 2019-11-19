@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.fila.shop.dao.AdminDAO;
 import com.fila.shop.dto.CategoryDTO;
+import com.fila.shop.dto.ProductDTO;
 
 @Service
 public class AdminService{
@@ -16,5 +17,9 @@ public class AdminService{
 	
 	public List<CategoryDTO> category() throws Exception{
 		return dao.category();
+	}
+	
+	public void pdtRegister(ProductDTO pd) throws Exception{
+		dao.pdtRegister(pd);
 	}
 }
