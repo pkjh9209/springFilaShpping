@@ -33,7 +33,17 @@
 						<p>상품 소개</p>
 						<p>${viewPd.pdtDes}</p>
 					</div>
-					<button type="submit" class="btn btn-success">수정</button><button type="button" onclick="location.href('${path}/admin/pdtDelete')" class="btn btn-danger">삭제</button>
+					<div>
+						<p>썸네일 이미지</p>
+						<p>${viewPd.pdtImg}</p>
+					</div>
+					<div>
+						<p>썸네일 이미지</p>
+						<p>${viewPd.pdtThumbNail}</p>
+					</div>
+					
+					<button type="submit" class="btn btn-success">수정</button>
+					<button id="btn_delete" type="button" onclick="location.href('${path}/admin/pdtDelete?viewPd=${viewPd.pdtNum}')" class="btn btn-danger">삭제</button>
 				</form>
 			</div>
 		<div class="footer_ad">

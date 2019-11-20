@@ -29,7 +29,9 @@
 		             pdtVolume,
 		             pdtPrice,
 		             pdtDes,
+		             pdtImg,
 		             pdtSection,
+		             pdtThumbNail,
 		             rgdate
 	             )
 			VALUES     
@@ -39,7 +41,9 @@
 		            #{pdtVolume},
 		            #{pdtPrice},
 		            #{pdtDes},
+		            #{pdtImg},
 		            #{pdtSection},
+		            #{pdtThumbNail},
 		            now()
 	            )
 		</insert>
@@ -66,6 +70,7 @@
 			       pdtDes,
 			       pdtImg,
 			       pdtSection,
+			       pdtThumbNail,
 			       rgdate
 			FROM   fila_product
 			WHERE  pdtNum = #{pdtNum}
@@ -79,7 +84,9 @@
 					pdtVolume = #{pdtVolume},
 					pdtDes = #{pdtDes},
 					pdtPrice = #{pdtPrice},
+					pdtImg = #{pdtImg},
 					pdtSection = #{pdtSection},
+					pdtThumbNail = #{pdtThumbNail},
 					rgdate = now()
 			WHERE   pdtNum = #{pdtNum}
 		</update>

@@ -6,41 +6,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
-
-	
 	<annotation-driven />
-
 	<resources location="/resources/" mapping="/resources/**" />
-	
-	<!-- mysql 접속 -->
-	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<beans:property name="url" value="jdbc:mysql://localhost:3306/fila?characterEncoding=UTF-8&amp;serverTimezone=UTC"  />
-		<beans:property name="username" value="root" />
-		<beans:property name="password" value="1234" />
-	</beans:bean>
-	
-	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<beans:property name="dataSource" ref="dataSource" />
-		<beans:property name="mapperLocations" value="classpath*:mappers/*Mappers.xml" />
-	</beans:bean>
-	
-	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-		<beans:constructor-arg ref="sqlSessionFactory" />
-	</beans:bean>
-
-	
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property value="/WEB-INF/views/" name="prefix" />
-		<beans:property value=".jsp" name="suffix" />
-	</beans:bean>
-	
-	<context:component-scan base-package="com.fila.shop" />
-	<context:component-scan base-package="com.fila.shop.controller" />
-	<context:component-scan base-package="com.fila.shop.dao" />
-	<context:component-scan base-package="com.fila.shop.dto" />
-	<context:component-scan base-package="com.fila.shop.service" />
-	
 	
 	
 </beans:beans>

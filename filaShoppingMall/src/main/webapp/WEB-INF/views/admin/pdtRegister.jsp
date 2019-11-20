@@ -71,7 +71,7 @@
 <body>
 	<%@include file ="adminNav.jsp" %>
 	<div class="container_ad col-sm-9 float-right">
-		<form action="${path}/admin/pdtRegisterProc" method="post">
+		<form action="${path}/admin/pdtRegisterProc" method="post" enctype="multipart/form-data">
 			<label>1차분류</label>
 			<input id="pdtSection" type="hidden" name="pdtSection" value="">
 			<select id="category01" class="catecory01">
@@ -96,7 +96,28 @@
 			</div>
 			<div>
 				<p>상품 소개</p>
-				<textarea rows="30" cols="20" name="pdtDes"></textarea>
+				<textarea rows="20" cols="100" name="pdtDes"></textarea>
+			</div>
+			<div>
+				<p>상품 이미지</p>
+			</div>
+				<input id="pdt_img" type="file" name="file"/>
+			<div>
+				<p>이미지 미리보기</p>
+				<img class="pre_view_img" src="">
+				<script>
+					$("#pdt_img").change(
+						function() {
+							if (this.files && this.files[0]) {
+								var reader = new FileReader;
+								reader.onload = function(data) {
+									$(".pre_view_img").attr("src",data.target.result).width(500);
+								}
+								reader.readAsDataURL(this.files[0]);
+							}
+					});
+				</script>
+				<%=request.getRealPath("/") %>
 			</div>
 			<input type="submit" value="상품등록하기">
 		</form>
