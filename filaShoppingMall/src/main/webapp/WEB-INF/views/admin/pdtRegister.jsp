@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>FILA-로그인</title>
 <%@include file ="../common/head.jsp" %>
+<!-- ck에디터 -->
+<script src="${path}/resources/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
 	//레벨1 함수
 	$(document).ready(function(){
@@ -96,7 +98,18 @@
 			</div>
 			<div>
 				<p>상품 소개</p>
-				<textarea rows="20" cols="100" name="pdtDes"></textarea>
+				<textarea id="pdtDes" name="pdtDes"></textarea>
+				<script>
+				 var ckeditor_config = 
+					{
+						resize_enaleb : false,
+						enterMode : CKEDITOR.ENTER_BR,
+						shiftEnterMode : CKEDITOR.ENTER_P,
+						filebrowserUploadUrl : "/shop/admin/ckUpload"
+					};
+
+					CKEDITOR.replace("pdtDes", ckeditor_config);
+				</script>
 			</div>
 			<div>
 				<p>상품 이미지</p>

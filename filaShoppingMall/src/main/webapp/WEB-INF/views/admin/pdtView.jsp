@@ -31,14 +31,16 @@
 					</div>
 					<div>
 						<p>상품 소개</p>
-						<p>${viewPd.pdtDes}</p>
+						<div>${viewPd.pdtDes}</div>
 					</div>
 					<div>
-						<p>썸네일 이미지</p>
+						<p>원본 이미지</p>
+						<img src="${path}${viewPd.pdtImg}" alt="썸네일 이미지">
 						<p>${viewPd.pdtImg}</p>
 					</div>
 					<div>
 						<p>썸네일 이미지</p>
+						<img src="${path}${viewPd.pdtThumbNail}" alt="썸네일 이미지">
 						<p>${viewPd.pdtThumbNail}</p>
 					</div>
 					

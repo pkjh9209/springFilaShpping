@@ -45,7 +45,8 @@
 
 	<!-- 업로드 패스 설정 -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="C:\Users\305\git\springFilaShpping\filaShoppingMall\src\main\resources\" />
+		<!-- 경로 계속 바꿔주기 -->
+		<beans:constructor-arg value="C:\Users\park\git\springFilaShpping\filaShoppingMall\src\main\webapp\resources"/>
 	</beans:bean>
 	
 	<!-- 일반 파일 업로드 경로 -->
@@ -56,6 +57,8 @@
 		<beans:property name="maxUploadSize" value="10485760" />
 	</beans:bean>
 
+	<!-- ck에디터 파일 업로드 경로 순서를 바꿀시 안됨.. -->
+	<resources mapping="/ckUpload/**" location="/resources/ckUpload/" />
 	<interceptors>
 		<interceptor>
 			<mapping path="/admin/**" />
