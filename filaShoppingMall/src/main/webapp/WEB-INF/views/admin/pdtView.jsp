@@ -11,7 +11,14 @@
 		<%@include file ="adminNav.jsp" %>
 			<div class="container_ad col-sm-9 float-right">
 				<h1>상품 조회 페이지</h1>
-				<form action="${path}/admin/pdtUpdate" method="get">
+				<form id="viewForm" action="${path}/admin/pdtUpdate" method="post" autocomplete="off">
+					<div class="inputArea"> 
+						<label>1차 분류</label>
+						<span class="category1"></span>        
+						<label>2차 분류</label>
+						<span class="category2">${viewPd.cateCode}</span>
+					</div>
+				
 					<input type="hidden" name="pdtNum" value="${viewPd.pdtNum}" readonly="readonly">					
 					<div>
 						<p>제품번호</p>
@@ -44,8 +51,26 @@
 						<p>${viewPd.pdtThumbNail}</p>
 					</div>
 					
-					<button type="submit" class="btn btn-success">수정</button>
-					<button id="btn_delete" type="button" onclick="location.href('${path}/admin/pdtDelete?viewPd=${viewPd.pdtNum}')" class="btn btn-danger">삭제</button>
+					<div class="inputArea">
+						<button type="button" id="update_Btn" class="btn btn-warning">수정</button>
+						<button type="button" id="delete_Btn" class="btn btn-danger">삭제</button>
+	
+						<script>
+							var formObj = $("#viewForm");
+		
+							$("#update_Btn").click(function() {
+								alert('오나');
+								formObj.attr("action", "/shop/admin/pdtUpdate");
+								formObj.attr("method", "get")
+								formObj.submit();
+							});
+		
+							$("#delete_Btn").click(function() {
+								formObj.attr("action", "/shop/admin/delete");
+								formObj.submit();
+							});
+						</script>
+				    </div>
 				</form>
 			</div>
 		<div class="footer_ad">

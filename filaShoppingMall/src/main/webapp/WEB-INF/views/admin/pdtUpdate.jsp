@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>FILA-로그인</title>
 <%@include file ="../common/head.jsp" %>
+<!-- ck에디터 -->
+<script src="${path}/resources/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
 	//레벨1 함수
 	$(document).ready(function(){
@@ -58,15 +60,14 @@
 		});
 	});
 </script>
-<script type="text/javascript">
+<!-- 상품 수정 소분류 값 바로 뜨게 하는기능 추후에 수정하기 -->	
+<!-- <script type="text/javascript">
 	$(document).ready(function(){
-	// 상품 수정 소분류 값 바로 뜨게 하는기능 추후에 수정하기	
 		$("#category01 option:contains('${pdtSection}')").prop("selected", true); 
 	});
-</script>
-
-<script type="text/javascript">
-	//카테고리 대분류 값 저장
+</script> -->
+<!-- 카테고리 대분류 값 저장 -->
+<!-- <script type="text/javascript">
 	$(document).ready(function(){
 	    $("#category01").on("change", function(){
 	        var setionVal = $(this).find("option[value='" + $(this).val() + "']").text();
@@ -74,19 +75,19 @@
 	    });
 	});
 </script>
-
+ -->
 </head>
 <body>
 	<%@include file ="adminNav.jsp" %>
 	<div class="container_ad col-sm-9 float-right">
 		<form action="${path}/admin/pdtUpdateProc" method="post" enctype="multipart/form-data">
 			<label>1차분류</label>
-			<input id="pdtSection" type="hidden" name="pdtSection" value="">
-			<select id="category01" class="catecory01">
+			<!-- <input id="pdtSection" type="hidden" name="pdtSection" value=""> -->
+			<select id="category01" class="catecory01" value="">
 				<option value="">전체</option>
 			</select>
 			<label>2차분류</label>
-			<select id="category02" class="category02" name="cateCode">
+			<select id="category02" class="category02" name="cateCode" value="">
 				<option value="">전체</option>
 			</select>
 			<input type="hidden" name="pdtNum" value="${viewPd.pdtNum}"/>
@@ -104,14 +105,14 @@
 			</div>
 			<div>
 				<p>상품 소개</p>
-				<textarea name="pdtDes">${viewPd.pdtDes}</textarea>
+				<textarea id="pdtDes" name="pdtDes">${viewPd.pdtDes}</textarea>
 				<script>
 				 var ckeditor_config = 
 					{
 						resize_enaleb : false,
 						enterMode : CKEDITOR.ENTER_BR,
 						shiftEnterMode : CKEDITOR.ENTER_P,
-						filebrowserUploadUrl : "/admin/ckUpload"
+						filebrowserUploadUrl : "/shop/admin/ckUpload"
 					};
 
 					CKEDITOR.replace("pdtDes", ckeditor_config);

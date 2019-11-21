@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fila.shop.dto.CategoryDTO;
+import com.fila.shop.dto.PdtViewDTO;
 import com.fila.shop.dto.ProductDTO;
 import com.fila.shop.service.AdminService;
 import com.fila.shop.utils.UploadFileUtils;
@@ -93,7 +94,7 @@ public class AdminController {
 	@RequestMapping(value = "/pdtView", method = RequestMethod.GET)
 	public String pdtView(@RequestParam("pdtNum") int pdtNum, Model model) throws Exception {
 
-		ProductDTO viewPd = adService.pdtView(pdtNum);
+		PdtViewDTO viewPd = adService.pdtJoinView(pdtNum);
 		model.addAttribute("viewPd", viewPd);
 		return "admin/pdtView";
 	}
@@ -101,12 +102,12 @@ public class AdminController {
 //	상품 수정 화면
 	@RequestMapping(value = "/pdtUpdate", method = RequestMethod.GET)
 	public String pdtUpdate(@RequestParam("pdtNum") int pdtNum, Model model) throws Exception {
-		ProductDTO viewPd = adService.pdtView(pdtNum);
+		PdtViewDTO viewPd = adService.pdtJoinView(pdtNum);
 		model.addAttribute("viewPd", viewPd);
 
 		List<CategoryDTO> category = null;
 		category = adService.category();
-		model.addAttribute("pdtSection", viewPd.getPdtSection());
+		//model.addAttribute("pdtSection", viewPd.getPdtSection());
 		model.addAttribute("pdtSubCate", viewPd.getCateCode());
 		model.addAttribute("category", JSONArray.fromObject(category));
 		return "admin/pdtUpdate";

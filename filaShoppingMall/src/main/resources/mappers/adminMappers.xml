@@ -90,6 +90,24 @@
 					rgdate = now()
 			WHERE   pdtNum = #{pdtNum}
 		</update>
+		<!-- 카테고리 조인 뷰 -->
+		<select id="pdtJoinView" resultType="com.fila.shop.dto.PdtViewDTO">
+			SELECT g.pdtNum,
+			       g.pdtName,
+			       g.cateCode,
+			       c.cateCoderef,
+			       c.cateName,
+			       pdtPrice,
+			       pdtVolume,
+			       pdtDes,
+			       pdtImg,
+			       pdtThumbnail,
+			       rgdate
+			FROM   fila_product g
+			       INNER JOIN fila_category c
+			               ON g.cateCode = c.cateCode
+			WHERE  g.pdtNum = #{pdtNum}
+		</select>
 		<!-- 상품 삭제 -->
 		<delete id="pdtDelete">
 			 DELETE

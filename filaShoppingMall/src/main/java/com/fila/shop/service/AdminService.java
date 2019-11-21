@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.fila.shop.dao.AdminDAO;
 import com.fila.shop.dto.CategoryDTO;
+import com.fila.shop.dto.PdtViewDTO;
 import com.fila.shop.dto.ProductDTO;
 
 @Service
@@ -37,5 +38,9 @@ public class AdminService{
 	// 상품삭제
 	public void pdtDelete(int pdtNum) throws Exception{
 		dao.pdtDelete(pdtNum);
+	}
+	// 상품조회 및 카테고리
+	public PdtViewDTO pdtJoinView(int pdtNum) throws Exception{
+		return dao.pdtJoinView(pdtNum);
 	}
 }
