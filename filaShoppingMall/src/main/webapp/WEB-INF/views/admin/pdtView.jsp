@@ -14,9 +14,9 @@
 				<form id="viewForm" action="${path}/admin/pdtUpdate" method="post" autocomplete="off">
 					<div class="inputArea"> 
 						<label>1차 분류</label>
-						<span class="category1"></span>        
+						<span class="category1">${viewPd.pdtSection}</span>        
 						<label>2차 분류</label>
-						<span class="category2">${viewPd.cateCode}</span>
+						<span class="category2">${viewPd.cateName}</span>
 					</div>
 				
 					<input type="hidden" name="pdtNum" value="${viewPd.pdtNum}" readonly="readonly">					

@@ -4,16 +4,29 @@ li{
 
 /* 초기화 덜된것 */
 
+.sub_nav,
+.main_nav{
+	min-width: 1480px;
+}
+/* 최대 최소값 */
 .main_nav{
 	width: 100%;
-	height: 90px;
+	height: 77px;
 	margin:auto;
-	background-color: #ccc;
+	background-color: #122754;
+}
+.nav_wrap{
+    width: 100%;
+    height: 77px;
+    background-color: #fff;
 }
 .main_nav li{
 	float:left;
 	font-size:24px;
-    padding: 33px 20px;
+    padding: 20px 20px 33px;
+}
+.main_nav li a{
+	color: #1c1c1c;
 }
 .sub_nav{
 	width: 100%;
@@ -21,21 +34,37 @@ li{
 	background-color: #fff;
 }
 .sub_nav_wp{
-	width: 1440px;
+	width: 100%;
 	margin: auto
 }
-.nav_wrap{
-	width: 1440px;
-	height: 90px;
-	margin: auto;
-}
+
 .sub_nav a,
 .sub_nav span
 {
 	float: right;
 }
-.sub_nav_rt{
-	
+.sub_nav_wp .sub_wp_lt,
+.sub_nav_wp .sub_wp_rt {
+	width: 50%;
+	height: 30px;
+}
+.sub_nav_wp .sub_wp_lt{
+	float: left;
+    padding: 10px;
+    padding-left: 160px;
+}
+.sub_nav_wp .sub_wp_rt{
+	float: right;
+	background-color: #122754;
+    padding: 10px;
+    padding-right: 160px;
+}
+.sub_wp_lt span{
+	float: left;
+	color: #000;
+}
+.ft-600{
+	font-weight: 600;
 }
 .lt_nav{
 	width: 50%;
@@ -50,7 +79,7 @@ li{
 }
 .logo_wrap img{
 	width: 130px;
-    margin: 18px;
+    margin: 12px 18px 12px 160px;
 }
 .rt_nav{
 	width: 50%;
@@ -62,4 +91,15 @@ li{
 }
 .rt_nav li{
 	color:#fff;
+}
+.ev-tt{
+	padding-right: 10px;
+}
+.sub_wp_lt span a{
+	color:#1c1c1c;
+}
+.sub_wp_rt a,
+.sub_wp_rt span{
+	color:#fff;
+	padding-left: 10px;
 }

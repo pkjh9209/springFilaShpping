@@ -102,6 +102,7 @@
 			       pdtDes,
 			       pdtImg,
 			       pdtThumbnail,
+			       pdtSection,
 			       rgdate
 			FROM   fila_product g
 			       INNER JOIN fila_category c

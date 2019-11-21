@@ -16,6 +16,7 @@ public class PdtViewDTO {
 	private String pdtVolume;
 	private String pdtImg;
 	private String pdtThumbNail;
+	private String pdtSection;
 	private String rgdate;
 	
 	private String cateCode;
