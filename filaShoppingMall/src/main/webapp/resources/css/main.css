@@ -20,6 +20,7 @@
 .section_01{
 	width: 100%;
 	background-color: #f9f9f9;
+	position: relative;
 }
 .section_02{
 	width: 100%;
@@ -41,16 +42,18 @@
     top: -30px;
 }
 .section_wp_01 .sec_rt{
-	width: 50%;
-	float: right;
-	padding: 45px;
+    width: 50%;
+    float: right;
+    padding: 54px;
 }
-
+.section_wp_01 .sec_rt h1{
+	font-size: 38px;
+	color: #424242;
+}
 
 .section_wp_02{
     width: 1080;
     height: 306px;
-    background-color: fuchsia;
     margin: auto;
 	
 }
@@ -64,4 +67,33 @@
 }
 .section_wp_02 .sec_lt img{
 	width: 100%;
+}
+
+.mt-12{
+	margin-bottom:12px;
+}
+.mt-6{
+	margin-bottom: -6px;
+}
+.mt-3{
+	margin-bttom: 3px;
+}
+.shop_btn{
+	width: 200px;
+    font-size: 18px;
+    padding: 14px;
+    border-radius: 50px;
+    border: none;
+    background-color: #d90134;
+    color: #fff;
+    margin-top: 20px;
+    font-weight: 500;
+}
+.sec01_divider{
+    width: 17.4%;
+    height: 3px;
+    bottom: 0px;
+    right: 1px;
+    background-color: #d90134;
+    position: absolute;
 }

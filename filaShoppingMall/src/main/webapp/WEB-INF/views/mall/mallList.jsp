@@ -10,15 +10,20 @@
 <body>
 	<%@include file ="../common/nav.jsp" %>
 	<div class="section">
+		<c:if test="">
+		
+		</c:if>
 		<ul>
-			<li>
-				<div>
-					<img alt="" src="${list.pdtThumbNail}">
-				</div>
-				<div>
-					<a href="${path}/mallView?pdtNum=${list.pdtNum}"></a><img alt="" src="${list.pdtThumbNail}">
-				</div>
-			</li>
+			<c:forEach items="${list}" var="list">
+				<li>
+					<div>
+						<img src="${path}${list.pdtThumbNail}">
+					</div>
+					<div>
+						<a href="${path}/mall/mallView?pdtCode=${list.pdtNum}">${list.pdtNum}</a>
+					</div>
+				</li>
+			</c:forEach>
 		</ul>
 	</div>
 </body>
