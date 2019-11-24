@@ -1,0 +1,17 @@
+.section{
+	width: 1080px;
+	margin: 20px auto;
+}
+.pdt_thu_wp{
+	width: 250px;
+}
+.pdt_htu{
+	width: 250px;
+    height: 250px;
+    overflow: hidden;
+}
+.pdt_list li{
+	float: left;
+    width: 250px;
+    margin: 20px;
+}

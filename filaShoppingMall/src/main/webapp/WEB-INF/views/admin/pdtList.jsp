@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>FILA-로그인</title>
 <%@include file ="../common/head.jsp" %>
+<!-- ck에디터 -->
+<script src="${path}/resources/ckeditor/ckeditor.js"></script>
 </head>
 	<body>
 		<%@include file ="adminNav.jsp" %>

@@ -1,0 +1,70 @@
+.section01{
+	width: 1000px;
+	margin: 20px auto;
+}
+.pdt_img{
+	width: 50%;
+	float: left;
+	overflow: hidden;
+}
+.pdt_info{
+	width: 50%;
+	float: right;
+	padding-left: 40px;
+    padding-top: 20px;
+}
+.pdt_name h1 {
+	font-size: 22px;
+	font-weight: 600;
+	
+}
+.info_content{
+	clear: both;
+	width: 1000px;
+	margin: 30px auto 0;
+	text-align: center;
+}
+.cart_btn{
+	height: 45px;
+    width: 47%;
+    float: left;
+    border: 1px solid #122754;
+    background-color: #fff;
+    color: #122754;
+    font-weight: 600;
+}
+.buy_btn{
+	height: 45px;
+    width: 47%;
+    float: right;
+    background-color: #122754;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+}
+.pdt_info_tt{
+    width: 97px;
+    font-size: 14px;
+    font-weight: 600;
+    float: left;
+    padding-right: 15px;
+    height: 20px;
+    vertical-align: middle;
+    margin: 7px 0;
+}
+.numBox{
+    width: 70px;
+    font-size: 12px;
+    text-align: center;
+    height: 30px;
+    border: none;
+    padding-left: 11px;
+    box-sizing: border-box;
+}
+.plus,
+.minus{
+	width: 30px;
+    height: 30px;
+    border: 1px solid rgb(215,215,215);
+    background-color: #fff;
+}

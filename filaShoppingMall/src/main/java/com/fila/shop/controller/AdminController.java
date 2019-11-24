@@ -73,8 +73,7 @@ public class AdminController {
 		}
 
 		pd.setPdtImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-		pd.setPdtThumbNail(
-				File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		pd.setPdtThumbNail(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 
 		adService.pdtRegister(pd);
 		return "redirect:/admin/pdtList";
@@ -106,7 +105,6 @@ public class AdminController {
 
 		List<CategoryDTO> category = null;
 		category = adService.category();
-		//model.addAttribute("pdtSection", viewPd.getPdtSection());
 		model.addAttribute("pdtSubCate", viewPd.getCateCode());
 		model.addAttribute("category", JSONArray.fromObject(category));
 		return "admin/pdtUpdate";
@@ -141,7 +139,7 @@ public class AdminController {
 	}
 
 //	상품 삭제
-	@RequestMapping(value = "/pdtDelete", method = RequestMethod.GET)
+	@RequestMapping(value = "/pdtDelete", method = RequestMethod.POST)
 	public String pdtDelete(@RequestParam("pdtNum") int pdtNum) throws Exception {
 		adService.pdtDelete(pdtNum);
 
@@ -184,11 +182,6 @@ public class AdminController {
 			json.addProperty("callback", callback);
 			
 			printWriter.println(json);
-			
-			// 업로드시 메시지 출력
-//			printWriter.println("<script type='text/javascript'>" + "window.parent.CKEDITOR.tools.callFunction("
-//					+ callback + ",'" + fileUrl + "','이미지를 업로드하였습니다.')" + "</script>");
-
 			printWriter.flush();
 
 		} catch (IOException e) {

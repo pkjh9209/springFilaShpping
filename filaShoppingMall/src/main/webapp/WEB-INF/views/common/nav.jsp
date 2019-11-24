@@ -15,8 +15,9 @@
 						
 					</c:if>
 					<c:if test="${user != null}">
-						
 						<li><a href="${path}/member/logout">로그아웃</a></li>
+						<li><a href="${path}/member/loginMember">고객센터</a></li>
+						<li><a href="${path}/member/loginMember">주문배송</a></li>
 						<c:if test="${user.verify == 9}">
 							<li><a href="${path}/admin/index">관리자 페이지로가기</a></li>
 						</c:if>
@@ -33,9 +34,9 @@
 					</div>
 					<ul>
 						<li><a href="${path}/mall/mallList?ref=1">OUTER</a></li>
-						<li>TOP</li>
-						<li>BOTTOM</li>
-						<li>ACC</li>
+						<li><a href="${path}/mall/mallList?ref=2">TOP</a></li>
+						<li><a href="${path}/mall/mallList?ref=3">BOTTOM</a></li>
+						<li><a href="${path}/mall/mallList?ref=4">ACC</a></li>
 					</ul>
 				</div>
 				<div class="rt_nav">

@@ -72,32 +72,42 @@
 </head>
 <body>
 	<%@include file ="adminNav.jsp" %>
-	<div class="container_ad col-sm-9 float-right">
+	<div class="pd-rt-120 col-sm-9 float-right">
+		<div>
+			<p class="mt-t10">FLIA ADMIN PAGE</p>
+			<h1 class="ad_page_in">관리자 페이지 - 상품등록</h1>
+		</div>
+		<hr>
 		<form action="${path}/admin/pdtRegisterProc" method="post" enctype="multipart/form-data">
-			<label>1차분류</label>
-			<input id="pdtSection" type="hidden" name="pdtSection" value="">
-			<select id="category01" class="catecory01">
-				<option value="">전체</option>
-			</select>
-			<label>2차분류</label>
-			<select id="category02" class="category02" name="cateCode">
-				<option value="">전체</option>
-			</select>
+			<div class="wh-50 mb-9 float-left pd-lr-20">
+				<label class="input_tt">1차분류</label>
+				<input id="pdtSection" class="form-control" type="hidden" name="pdtSection" value="">
+				<select id="category01" class="catecory01 form-control">
+					<option value="">전체</option>
+				</select>
+			</div>
 			
-			<div>
-				<p>상품명</p>
-				<input type="text" name="pdtName"/>
+			<div class="wh-50 mb-9 float-right pd-lr-20">
+				<label class="input_tt">2차분류</label>
+				<select id="category02" class="category02 form-control" name="cateCode">
+					<option value="">전체</option>
+				</select>
 			</div>
-			<div>
-				<p>상품 수량</p>
-				<input type="text" name="pdtVolume"/>
+			
+			<div class="pd-lr-20">
+				<p class="input_tt">상품명</p>
+				<input type="text" class="form-control" name="pdtName"/>
 			</div>
-			<div>
-				<p>상품 가격</p>
-				<input type="text" name="pdtPrice"/>
+			<div class="pd-lr-20">
+				<p class="input_tt">상품 수량</p>
+				<input type="text" class="form-control" name="pdtVolume"/>
 			</div>
-			<div>
-				<p>상품 소개</p>
+			<div class="pd-lr-20">
+				<p class="input_tt">상품 가격</p>
+				<input type="text" class="form-control" name="pdtPrice"/>
+			</div>
+			<div class="pd-lr-20">
+				<p class="input_tt">상품 소개</p>
 				<textarea id="pdtDes" name="pdtDes"></textarea>
 				<script>
 				 var ckeditor_config = 
@@ -111,11 +121,11 @@
 					CKEDITOR.replace("pdtDes", ckeditor_config);
 				</script>
 			</div>
-			<div>
-				<p>상품 이미지</p>
+			<div class="pd-lr-20">
+				<p class="input_tt">상품 이미지</p>
 			</div>
 				<input id="pdt_img" type="file" name="file"/>
-			<div>
+			<div class="pd-rt-20">
 				<p>이미지 미리보기</p>
 				<img class="pre_view_img" src="">
 				<script>
@@ -130,9 +140,9 @@
 							}
 					});
 				</script>
-				<%=request.getRealPath("/") %>
 			</div>
-			<input type="submit" value="상품등록하기">
+			<input type="submit" class="btn btn-primary" value="상품등록하기">
+			<button type="button" class="btn btn-secondary" onclick="history.go(-1)">취소</button>
 		</form>
 	</div>
 	<div class="footer_ad">

@@ -1,14 +1,53 @@
+/* 초기화 덜된것 */
 li{
 	list-style: none;
 }
 
-/* 초기화 덜된것 */
+/* 공통값 */
+.wh-50{
+	width: 50%;
+}
+.mb-9{
+	margin-bottom: 9px;
+}
+.pd-rt-120{
+	padding-right: 120px;
+}
+.pd-lr-20{
+	padding:0 20px;
+}
+.pd-5{
+	padding:5px;
+}
+.mt-t10{
+	margin-top: 10px;
+}
+.mt-t5{
+	margin-top: 5px;
+}
+.mr15{
+	margin: 15px;
+}
+.ad_page_in{
+	font-size: 18px;
+    margin-top: 10px;
+    font-weight: 700;
+}
+.ft-size-24{
+	font-size: 24px;
+	padding:0 5px 2px;
+	color: d90134;
+}
 
+.clear_both{
+	clear: both;
+}
+
+/* 사용자 네비 */
 .sub_nav,
 .main_nav{
 	min-width: 1480px;
 }
-/* 최대 최소값 */
 .main_nav{
 	width: 100%;
 	height: 77px;
@@ -19,6 +58,7 @@ li{
     width: 100%;
     height: 77px;
     background-color: #fff;
+   	min-width: 1550px;
 }
 .main_nav li{
 	float:left;
@@ -35,7 +75,8 @@ li{
 }
 .sub_nav_wp{
 	width: 100%;
-	margin: auto
+	margin: auto;
+	min-width: 1550px;
 }
 
 .sub_nav a,
@@ -102,4 +143,14 @@ li{
 .sub_wp_rt span{
 	color:#fff;
 	padding-left: 10px;
+}
+/* 어드민 네비 */
+.ad_nav_tt{
+    padding: 18px;
+    font-size: 30px;
+}
+.input_tt{
+	font-size: 16px;
+    font-weight: 600;
+    margin: 9px 0; 
 }

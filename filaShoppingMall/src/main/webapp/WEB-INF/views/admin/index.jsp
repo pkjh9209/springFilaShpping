@@ -8,12 +8,17 @@
 <%@include file ="../common/head.jsp" %>
 </head>
 	<body>
-		<%@include file ="adminNav.jsp" %>
-		<div class="container_ad">
-			<h1>어드민 페이지입니다.</h1>
-		</div>
-		<div class="footer_ad">
-		
+		<div class="container-fluid">
+			<div class="row content">
+				<%@include file ="adminNav.jsp" %>
+				<div class="col-sm-9">
+					<h4>
+						<small>FLIA ADMIN PAGE</small>
+						<h1>관리자 페이지</h1>
+					</h4>
+					<hr>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

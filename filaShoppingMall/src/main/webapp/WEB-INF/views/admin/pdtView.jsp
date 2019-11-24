@@ -50,8 +50,8 @@
 						<img src="${path}${viewPd.pdtThumbNail}" alt="썸네일 이미지">
 						<p>${viewPd.pdtThumbNail}</p>
 					</div>
-					
-					<div class="inputArea">
+
+			<div class="inputArea">
 						<button type="button" id="update_Btn" class="btn btn-warning">수정</button>
 						<button type="button" id="delete_Btn" class="btn btn-danger">삭제</button>
 	
@@ -66,8 +66,12 @@
 							});
 		
 							$("#delete_Btn").click(function() {
-								formObj.attr("action", "/shop/admin/delete");
-								formObj.submit();
+								var con = confirm("정말로 삭제 하시겠습니까?")
+								
+								if(con){
+									formObj.attr("action", "/shop/admin/pdtDelete");
+									formObj.submit();
+								}
 							});
 						</script>
 				    </div>

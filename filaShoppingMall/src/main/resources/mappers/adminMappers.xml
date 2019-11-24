@@ -111,8 +111,8 @@
 		</select>
 		<!-- 상품 삭제 -->
 		<delete id="pdtDelete">
-			 DELETE
-			     fila_product
+			 DELETE FROM
+				 fila_product
 			 WHERE pdtNum = #{pdtNum}
 		</delete>
 		
