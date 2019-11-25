@@ -105,7 +105,7 @@
 					  };
 					
 					$.ajax({
-							url : "/shop/mall/view/insertCart",
+							url : "/shop/mall/mallView/insertCart",
 							type : "post",
 							data : data,
 							success : function(result){

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fila.shop.dto.CartDTO;
+import com.fila.shop.dto.CartListDTO;
 import com.fila.shop.dto.MemberDTO;
 import com.fila.shop.dto.PdtCmtListDTO;
 import com.fila.shop.dto.PdtCommentDTO;
@@ -89,14 +90,16 @@ public class MallController {
 	}
 // 카트 담기
 	@ResponseBody
-	@RequestMapping(value = "/view/insertCart", method = RequestMethod.POST)
+	@RequestMapping(value = "/mallView/insertCart", method = RequestMethod.POST)
 	public int insertCart(CartDTO td, HttpSession session) throws Exception {
 	 
 	int result = 0;	
 	
 	MemberDTO user = (MemberDTO)session.getAttribute("user");
+	System.out.println(user);
 	if(user != null) {
-		user.setUserId(user.getUserId());
+		System.out.println("일로오나요");
+		td.setUserId(user.getUserId());
 		mlService.insertCart(td);
 		result = 1;
 	}
@@ -105,4 +108,42 @@ public class MallController {
 
 	 
 	}
+// 카트 목록
+	@RequestMapping(value = "/listCart", method = RequestMethod.GET)
+	public String getCartList(HttpSession session, Model model) throws Exception {
+	 
+	 MemberDTO user = (MemberDTO)session.getAttribute("user");
+	 String userId = user.getUserId();
+	 
+	 List<CartListDTO> cartList = mlService.cartList(userId);
+	 
+	 model.addAttribute("cartList", cartList);
+	 
+	 return "mall/mallCartList";
+	}
+// 카트 삭제
+	@ResponseBody
+	@RequestMapping(value = "/deleteCart", method = RequestMethod.POST)
+	public int deleteCart(HttpSession session, @RequestParam(value = "chbox[]") List<String> chArr, CartDTO td) throws Exception {
+	 
+		MemberDTO user = (MemberDTO)session.getAttribute("user");
+		String userId = user.getUserId();
+	 
+	 	int result = 0;
+ 		int cartNum = 0;
+	 
+	 
+		if(user != null) {
+		td.setUserId(userId);
+		  
+		for(String i : chArr) {   
+			cartNum = Integer.parseInt(i);
+			td.setCartNum(cartNum);
+			mlService.deleteCart(td);
+		}   
+			result = 1;
+		}
+		
+		return result;  
+	}	
 }

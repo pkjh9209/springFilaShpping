@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.fila.shop.dao.MallDAO;
 import com.fila.shop.dto.CartDTO;
+import com.fila.shop.dto.CartListDTO;
 import com.fila.shop.dto.PdtCmtListDTO;
 import com.fila.shop.dto.PdtCommentDTO;
 import com.fila.shop.dto.PdtViewDTO;
@@ -43,5 +44,13 @@ public class MallService {
 	//카트담기
 	public void insertCart(CartDTO td) throws Exception{
 		dao.insertCart(td);
+	}
+	// 카트 리스트
+	public List<CartListDTO> cartList(String userId)throws Exception{
+		return dao.cartList(userId);
+	}
+	//카트삭제
+	public void deleteCart(CartDTO td) throws Exception{
+		dao.deleteCart(td);
 	}
 }
