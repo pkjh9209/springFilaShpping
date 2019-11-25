@@ -57,7 +57,22 @@
 				<button class="shop_btn02">Shopping Now</button>
 			</div>
 		</div>
+		<img class="sale_bg" alt="섹션2배경" src="${path}/resources/img/bg_sale.png">
 		<div class="sec02_divider"></div>
+	</div>
+	<div class="section_03">
+		<div class="section_wp_03">
+			<div class="sec03_lt">
+				<img alt="섹션3 타이틀" src="${path}/resources/img/section03_title.png">
+			</div>
+			<div class="sec03_rt">
+				<span></span>
+				<div class="sec_divider_03"></div>
+				<div class="sec_divider_04"></div>
+			</div>
+		</div>
+		
+		
 	</div>
 
 	<script src="${path}/resources/js/swiper.min.js"></script>

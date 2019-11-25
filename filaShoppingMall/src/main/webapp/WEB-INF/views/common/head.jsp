@@ -11,4 +11,7 @@
 <!-- 공용 css -->
 <link rel="stylesheet" href="${path}/resources/css/reset.css">
 <link rel="stylesheet" href="${path}/resources/css/common.css">
+<!-- icon image fontawesome -->
+<script src="https://kit.fontawesome.com/272fabe2a2.js" crossorigin="anonymous"></script>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 

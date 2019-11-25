@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.fila.shop.dto.CartDTO;
 import com.fila.shop.dto.PdtCmtListDTO;
 import com.fila.shop.dto.PdtCommentDTO;
 import com.fila.shop.dto.PdtViewDTO;
@@ -38,5 +39,9 @@ public class MallDAO {
 	//아이디 체크
 	public String idCheck(int cmtPdtNum) throws Exception{
 		return ss.selectOne("mall.pdtCmtIdCheck",cmtPdtNum);
+	}
+	//카트담기
+	public void insertCart(CartDTO td) throws Exception{
+		ss.insert("mall.insertCart",td);
 	}
 }

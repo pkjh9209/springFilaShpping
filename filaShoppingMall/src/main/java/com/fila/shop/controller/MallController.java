@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fila.shop.dto.CartDTO;
 import com.fila.shop.dto.MemberDTO;
 import com.fila.shop.dto.PdtCmtListDTO;
 import com.fila.shop.dto.PdtCommentDTO;
@@ -85,5 +86,23 @@ public class MallController {
 		   result = 1;
 	   }
 	 return result;
+	}
+// 카트 담기
+	@ResponseBody
+	@RequestMapping(value = "/view/insertCart", method = RequestMethod.POST)
+	public int insertCart(CartDTO td, HttpSession session) throws Exception {
+	 
+	int result = 0;	
+	
+	MemberDTO user = (MemberDTO)session.getAttribute("user");
+	if(user != null) {
+		user.setUserId(user.getUserId());
+		mlService.insertCart(td);
+		result = 1;
+	}
+
+	return result;
+
+	 
 	}
 }

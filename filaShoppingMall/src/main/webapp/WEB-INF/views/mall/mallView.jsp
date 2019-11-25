@@ -94,6 +94,35 @@
 		<div><span>총결제 금액</span> <span></span></div>
 		<div class="addToCart">
 			<button class="cart_btn" type="button">카트에 담기</button>
+			<script type="text/javascript">
+				$(".cart_btn").click(function(){
+					var pdtNum = $("#pdt_num").val();
+					var cartVolume = $(".numBox").val();
+					   
+					var data = {
+							pdtNum : pdtNum,
+							cartVolume : cartVolume
+					  };
+					
+					$.ajax({
+							url : "/shop/mall/view/insertCart",
+							type : "post",
+							data : data,
+							success : function(result){
+								if(result == 1){
+									alert("카트 담기 성공");
+									$(".numBox").val("1");
+								}else{
+									alert("로그인후 이용해주세요");
+									$(".numBox").val("1");
+								}
+						},
+						error : function(){
+							alert("관리자에게 문의해주세요");
+						}
+					});
+				});
+							</script>
 			<button class="buy_btn" type="button">바로 결제하기</button>
 		</div>
 		</div>
@@ -102,20 +131,20 @@
 		<p>상품 소개</p>
 		<div>${viewPd.pdtDes}</div>
 	</div>
-	<div id="reply">
+	<div class="cmt_content" id="reply">
 		<c:if test="${user == null }">
-			<p>소감을 남기시려면 <a href="/member/loginMember">로그인</a>해주세요</p>
+			<p>소감을 남기시려면 <a href="${path}/member/loginMember">로그인</a>해주세요</p>
 		</c:if>
 		<c:if test="${user != null}">
 		<div class="replyForm">
 			<form id="cmt_form" method="post" autocomplete="off">
 				<input id="pdt_num" type="hidden" name="pdtNum" value="${viewPd.pdtNum}" readonly="readonly">
-				<p>유저아이디 : ${user.userId}</p>
+				<i class="fas fa-user-circle user_icon"></i> <p class="user_id"> ${user.userId}</p>
 				<div class="input_area">
-					<textarea id="cmtDes" name="cmtDes"></textarea>
+					<textarea class="form-control" id="cmtDes" name="cmtDes"></textarea>
 				</div>
 				<div class="input_area">
-					<button type="button" id="comment_btn">소감 남기기</button>
+					<button type="button" class="btn btn-primary" id="comment_btn">소감 남기기</button>
 					<script>
 						$("#comment_btn").click(function(){
 						 
@@ -140,6 +169,7 @@
 									  alert("관리자에게 문의해주세요.");
 							    }
 							});
+							
 						});
 					</script>
 				</div>
@@ -176,11 +206,9 @@
 						    }
 						});
 					}
-					
 				});
 			</script>  
 		</div>
 	</div>
-
 </body>
 </html>

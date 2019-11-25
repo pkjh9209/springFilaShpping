@@ -67,4 +67,21 @@
  		FROM fila_pdtcomment
  		WHERE cmtPdtNum = #{cmtPdtNum}
  	</select>
+ 	
+ 	<!-- 카트 담기 -->
+ 	<insert id="insertCart">
+ 		INSERT INTO fila_cart
+ 				(
+ 				userId,
+ 				pdtNum,
+ 				cartVolume,
+ 				rgdate
+ 				)
+		VALUES  (
+				#{userId},
+				#{pdtNum},
+				#{cartVolume},
+				now()
+			    );
+ 	</insert>
  </mapper>
