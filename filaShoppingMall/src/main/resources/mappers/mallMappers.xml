@@ -155,6 +155,7 @@
 		       userAdd3,
 		       orderTel,
 		       totalPrice,
+		       deliveryStatus,
 		       rgdate
 		FROM   fila_order
 		WHERE  userId = #{userId}; 
@@ -171,6 +172,7 @@
 		       a.orderTel,
 		       a.totalPrice,
 		       a.rgdate,
+			   a.deliveryStatus,
 		       b.orderDetailsNum,
 		       b.pdtNum,
 		       b.cartVolume,
@@ -185,5 +187,4 @@
 		WHERE  a.userId = #{userId}
 		       AND a.orderId = #{orderId}; 
 	</select>
-	
  </mapper>

@@ -17,4 +17,5 @@ public class OrderDTO {
 	private String orderTel;
 	private int totalPrice;
 	private String rgdate;
+	private String deliveryStatus;
 }

@@ -10,8 +10,9 @@
 <body>
 	<%@include file ="../common/nav.jsp" %>
 	<div class="page_navigater"></div>
+	주문번호 상세보기
 	<div class="section">
-		<div class="orderInfo">
+		<div class="dateilInfo">
 			<c:forEach items="${orderView}" var="orderView" varStatus="status">
 				<c:if test="${status.first}">
 					<p><span>수령인</span>${orderView.orderTo}</p>
@@ -24,7 +25,7 @@
 			<c:forEach items="${orderView}" var="orderView">     
 				<li>
 					<div class="thumb">
-						<img src="${orderView.pdtThumbNail}" />
+						<img src="${path}${orderView.pdtThumbNail}" />
 					</div>
 					<div class="gdsInfo">
 						<span>상품명</span>${orderView.pdtName}<br />

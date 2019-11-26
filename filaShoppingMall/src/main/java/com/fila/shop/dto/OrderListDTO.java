@@ -25,4 +25,6 @@ public class OrderListDTO {
 	private String pdtName;
 	private String pdtThumbNail;
 	private int pdtPrice;
+	
+	private String deliveryStatus;
 }

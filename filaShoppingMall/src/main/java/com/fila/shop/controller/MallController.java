@@ -191,26 +191,25 @@ public class MallController {
 		od.setUserId(userId);
 		 
 		List<OrderDTO> orderList = mlService.orderList(od);
-		System.out.println("리스트 = "+orderList); 
 		model.addAttribute("orderList", orderList);
 		return "mall/mallOrderList";
 	}
 	
 	// 주문 상세 목록
-	@RequestMapping(value = "/orderView", method = RequestMethod.GET)
-	public String orderListView(HttpSession session,
+	@RequestMapping(value = "/mallOrderListView", method = RequestMethod.GET)
+	public void orderListView(HttpSession session,
 	      @RequestParam("orderCode") String orderId, OrderDTO od, Model model) throws Exception {
-	 
+		System.out.println("orderId = "+orderId);
 		MemberDTO user = (MemberDTO)session.getAttribute("user");
+		System.out.println("user = "+user);
 		String userId = user.getUserId();
-		 
+		System.out.println("userId = "+userId); 
 		od.setUserId(userId);
 		od.setOrderId(orderId);
 		 
 		List<OrderListDTO> orderView = mlService.orderViewList(od);
-		 
+		 System.out.println("orderView = "+orderView);
 		model.addAttribute("orderView", orderView);
 		
-		return "mall/mallOrderListView";
 	}
 }

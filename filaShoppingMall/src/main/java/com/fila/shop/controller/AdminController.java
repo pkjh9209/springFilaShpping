@@ -25,6 +25,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fila.shop.dto.CartDTO;
 import com.fila.shop.dto.CategoryDTO;
 import com.fila.shop.dto.MemberDTO;
+import com.fila.shop.dto.OrderDTO;
+import com.fila.shop.dto.OrderListDTO;
+import com.fila.shop.dto.PdtCmtListDTO;
+import com.fila.shop.dto.PdtCommentDTO;
 import com.fila.shop.dto.PdtViewDTO;
 import com.fila.shop.dto.ProductDTO;
 import com.fila.shop.service.AdminService;
@@ -149,7 +153,61 @@ public class AdminController {
 
 		return "redirect:/admin/pdtList";
 	}
-// ck 에디터 파일 업로드
+	
+//  주문 목록
+	@RequestMapping(value = "/orderList", method = RequestMethod.GET)
+	public String getOrderList(Model model) throws Exception {
+	   
+		 List<OrderDTO> orderList = adService.orderList();
+		 
+		 model.addAttribute("orderList", orderList);
+		 return "admin/orderList";
+	}
+
+//  주문 상세 목록
+	@RequestMapping(value = "/orderListView", method = RequestMethod.GET)
+	public void getOrderList(@RequestParam("orderCode") String orderId, OrderDTO od, Model model) throws Exception {
+	 
+		 od.setOrderId(orderId);  
+		 List<OrderListDTO> orderListView = adService.orderListView(od);
+		 
+		 model.addAttribute("orderListView", orderListView);
+	}
+//  배송상태 변경
+	@RequestMapping(value = "/orderListView", method = RequestMethod.POST)
+	public String deliveryStatus(OrderDTO od) throws Exception {
+		System.out.println("od="+od);
+		adService.deliveryStatus(od);
+		
+		List<OrderListDTO> orderView = adService.orderListView(od); 
+		ProductDTO pdt = new ProductDTO();
+		  
+		for(OrderListDTO i : orderView) {
+			pdt.setPdtNum(i.getPdtNum());
+			pdt.setPdtVolume(i.getCartVolume());
+			adService.changeStock(pdt);
+		}
+		return "redirect:/admin/orderListView?orderCode="+od.getOrderId();
+	}	
+//  상품평보기
+	@RequestMapping(value = "/allCmt", method = RequestMethod.GET)
+	public void getAllCmt(Model model) throws Exception {
+				
+		List<PdtCmtListDTO> allCmt = adService.cmtAll();
+		
+		model.addAttribute("allCmt", allCmt);
+	}
+
+//  상품평 삭제
+	@RequestMapping(value = "/allCmt", method = RequestMethod.POST)
+	public String postAllCmt(PdtCommentDTO pcd) throws Exception {
+		System.out.println("삭제 pcd = "+pcd);		
+		adService.adDeleteCmt(pcd.getCmtPdtNum());
+		
+		return "redirect:/admin/allCmt";
+	}	
+	
+//  ck 에디터 파일 업로드
 	@RequestMapping(value = "/ckUpload", method = RequestMethod.POST)
 	public void postCKEditorImgUpload(HttpServletRequest req, HttpServletResponse res,
 			@RequestParam MultipartFile upload) throws Exception {

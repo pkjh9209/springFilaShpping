@@ -75,6 +75,7 @@
 			FROM   fila_product
 			WHERE  pdtNum = #{pdtNum}
 		</select>
+		
 		<!-- 상품수정 -->
 		<update id="pdtUpdate">
 			UPDATE  fila_product
@@ -90,6 +91,7 @@
 					rgdate = now()
 			WHERE   pdtNum = #{pdtNum}
 		</update>
+		
 		<!-- 카테고리 조인 뷰 -->
 		<select id="pdtJoinView" resultType="com.fila.shop.dto.PdtViewDTO">
 			SELECT g.pdtNum,
@@ -109,6 +111,7 @@
 			               ON g.cateCode = c.cateCode
 			WHERE  g.pdtNum = #{pdtNum}
 		</select>
+		
 		<!-- 상품 삭제 -->
 		<delete id="pdtDelete">
 			 DELETE FROM
@@ -120,28 +123,72 @@
 		<select id="orderList" resultType="com.fila.shop.dto.OrderDTO">
 			SELECT * FROM fila_order;
 		</select>
-		<!-- 어드민 특정 주문목록보기 -->
+		
+		<!-- 어드민 특정 주문 목록보기 -->
 		<select id="orderListView" resultType="com.fila.shop.dto.OrderListDTO">
-					SELECT a.orderId,
-					       a.userId,
-					       a.orderTo,
-					       a.userAdd1,
-					       a.userAdd2,
-					       a.userAdd3,
-					       a.orderTel,
-					       a.totalPrice,
-					       a.rgdate,
-					       b.orderDetailsNum,
-					       b.pdtNum,
-					       b.cartVolume,
-					       c.pdtName,
-					       c.pdtThumbNail,
-					       c.pdtPrice
-					FROM   fila_order a
-					       INNER JOIN fila_order_details b
-					               ON a.orderId = b.orderId
-					       INNER JOIN fila_product c
-					               ON b.pdtNum = c.pdtNum
-					WHERE  a.orderId = #{orderId}; 
+			SELECT a.orderId,
+			       a.userId,
+			       a.orderTo,
+			       a.userAdd1,
+			       a.userAdd2,
+			       a.userAdd3,
+			       a.orderTel,
+			       a.totalPrice,
+			       a.rgdate,
+			       a.deliveryStatus,
+			       b.orderDetailsNum,
+			       b.pdtNum,
+			       b.cartVolume,
+			       c.pdtName,
+			       c.pdtThumbNail,
+			       c.pdtPrice
+			FROM   fila_order a
+			       INNER JOIN fila_order_details b
+			               ON a.orderId = b.orderId
+			       INNER JOIN fila_product c
+			               ON b.pdtNum = c.pdtNum
+			WHERE  a.orderId = #{orderId}; 
 		</select>
+		
+		<!-- 배송 상태 업데이트 -->
+		<update id="deliveryStatus">
+			UPDATE fila_order
+			SET    deliveryStatus = #{deliveryStatus}
+			WHERE  orderId = #{orderId}
+		</update>
+		
+		<!-- 상품 수량 조절 -->
+		<update id="changeStock">
+			 UPDATE fila_product
+			    SET pdtVolume = pdtVolume - #{pdtVolume}
+			  WHERE pdtNum = #{pdtNum}
+		</update>
+		
+		<!-- 상품수량 조절  -->
+		<select id="changeStock_sub" resultType="com.fila.shop.dto.OrderDetailDTO">
+			SELECT	orderId,
+					pdtNum,
+					cartVolume
+			FROM	fila_order_details
+			WHERE	orderId = #{orderId}
+		</select>
+		
+		<!--  상품평 모두보기(추후 하나 이름으로 수정) -->
+		<select id="cmtAll" resultType="com.fila.shop.dto.PdtCmtListDTO">
+			SELECT a.pdtNum,
+			       a.userid,
+			       a.cmtPdtNum,
+			       a.cmtDes,
+			       a.rgdate,
+			       b.userId
+			FROM   fila_pdtcomment a
+			       INNER JOIN fila_member b
+			               ON a.userId = b.userId; 
+		</select>
+		
+		<!-- 상품평 지우기 -->
+		<delete id="adDeleteCmt">
+		    DELETE FROM fila_pdtcomment
+		    WHERE  cmtPdtNum = #{cmtPdtNum}
+		</delete>
  </mapper>
