@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class OrderDTO {
+public class OrderListDTO {
 	private String orderId;
 	private String userId;
 	private String orderTo;
@@ -17,4 +17,12 @@ public class OrderDTO {
 	private String orderTel;
 	private int totalPrice;
 	private String rgdate;
+	
+	private int pdtNum;
+	private int orderDetailsNum;
+	private int cartVolume;
+
+	private String pdtName;
+	private String pdtThumbNail;
+	private int pdtPrice;
 }

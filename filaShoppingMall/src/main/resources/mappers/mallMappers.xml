@@ -115,7 +115,7 @@
              orderTel,
              totalPrice,
              rgdate)
-		VALUES      ('222',
+		VALUES(
              #{orderId},
              #{userId},
              #{orderTo},
@@ -126,18 +126,64 @@
              #{totalPrice},
              Now());
  	</insert>
+ 	
  	<!-- 주문상세보기 -->
  	<insert id="orderInfoDetail">
- 		INSERT INTO fila_order_details
-            (orderDetailsNum,
-             orderId,
-             pdtNum,
-             cartVolume)
-		VALUES(
-			 #{orderDetailsNum},
-             #{orderId},
-             #{pdtNum},
-             #{cartVolume}
-             ) 
+		INSERT INTO fila_order_details
+		            (orderId,
+		             pdtNum,
+		             cartVolume)
+		SELECT #{orderId},
+		       pdtNum,
+		       cartVolume
+		FROM   fila_cart; 
  	</insert>
+ 	
+ 	<!-- 카트 비우기 -->
+	<delete id="deleteAllCart">
+		 DELETE FROM fila_cart
+	     WHERE userId = #{userId}
+	</delete>
+	
+	<!-- 유저 주문목록 -->
+	<select id="orderList" resultType="com.fila.shop.dto.OrderDTO">
+		SELECT orderId,
+		       userId,
+		       orderTo,
+		       userAdd1,
+		       userAdd2,
+		       userAdd3,
+		       orderTel,
+		       totalPrice,
+		       rgdate
+		FROM   fila_order
+		WHERE  userId = #{userId}; 
+	</select>
+	
+	<!-- 주문 상세보기 -->
+	<select id="orderView" resultType="com.fila.shop.dto.OrderListDTO">
+		SELECT a.orderId,
+		       a.userId,
+		       a.orderTo,
+		       a.userAdd1,
+		       a.userAdd2,
+		       a.userAdd3,
+		       a.orderTel,
+		       a.totalPrice,
+		       a.rgdate,
+		       b.orderDetailsNum,
+		       b.pdtNum,
+		       b.cartVolume,
+		       c.pdtName,
+		       c.pdtThumbNail,
+		       c.pdtPrice
+		FROM   fila_order a
+		       INNER JOIN fila_order_details b
+		               ON a.orderId = b.orderId
+		       INNER JOIN fila_product c
+		               ON b.pdtNum = c.pdtNum
+		WHERE  a.userId = #{userId}
+		       AND a.orderId = #{orderId}; 
+	</select>
+	
  </mapper>

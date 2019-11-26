@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import com.fila.shop.dto.CartDTO;
 import com.fila.shop.dto.CartListDTO;
+import com.fila.shop.dto.OrderDTO;
+import com.fila.shop.dto.OrderDetailDTO;
+import com.fila.shop.dto.OrderListDTO;
 import com.fila.shop.dto.PdtCmtListDTO;
 import com.fila.shop.dto.PdtCommentDTO;
 import com.fila.shop.dto.PdtViewDTO;
@@ -52,5 +55,25 @@ public class MallDAO {
 	//카트삭제
 	public void deleteCart(CartDTO td) throws Exception{
 		ss.delete("mall.deleteCart",td);
+	}
+	//주문정보
+	public void orderInfo(OrderDTO od) throws Exception{
+		ss.insert("mall.orderInfo",od);
+	}
+	//주문 상세보기
+	public void orderInfoDetail(OrderDetailDTO otd) throws Exception{
+		ss.insert("mall.orderInfoDetail",otd);
+	}
+	//카트 비우기
+	public void deleteAllCart(String userId) throws Exception{
+		ss.delete("mall.deleteAllCart",userId);
+	}
+	//주문 목록
+	public List<OrderDTO> orderList(OrderDTO od) throws Exception{
+		return ss.selectList("mall.orderList",od);
+	}
+	//주문 상세보기
+	public List<OrderListDTO> orderViewList(OrderDTO od) throws Exception{
+		return ss.selectList("mall.orderView",od);
 	}
 }

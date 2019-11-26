@@ -115,5 +115,33 @@
 				 fila_product
 			 WHERE pdtNum = #{pdtNum}
 		</delete>
-		
+			
+		<!-- 어드민 주문목록 전체보기 -->
+		<select id="orderList" resultType="com.fila.shop.dto.OrderDTO">
+			SELECT * FROM fila_order;
+		</select>
+		<!-- 어드민 특정 주문목록보기 -->
+		<select id="orderListView" resultType="com.fila.shop.dto.OrderListDTO">
+					SELECT a.orderId,
+					       a.userId,
+					       a.orderTo,
+					       a.userAdd1,
+					       a.userAdd2,
+					       a.userAdd3,
+					       a.orderTel,
+					       a.totalPrice,
+					       a.rgdate,
+					       b.orderDetailsNum,
+					       b.pdtNum,
+					       b.cartVolume,
+					       c.pdtName,
+					       c.pdtThumbNail,
+					       c.pdtPrice
+					FROM   fila_order a
+					       INNER JOIN fila_order_details b
+					               ON a.orderId = b.orderId
+					       INNER JOIN fila_product c
+					               ON b.pdtNum = c.pdtNum
+					WHERE  a.orderId = #{orderId}; 
+		</select>
  </mapper>

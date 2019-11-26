@@ -9,7 +9,7 @@
 				<div class="sub_wp_rt">	
 					<c:if test="${user == null}">
 						<a href="${path}/mall/listCart">장바구니</a>
-						<a href="${path}/member/loginMember">주문배송</a>
+						<a href="${path}/mall/orderList">주문배송</a>
 						<a href="${path}/member/insertMember">회원가입</a>
 						<a href="${path}/member/loginMember">로그인</a>
 						
@@ -17,7 +17,7 @@
 					<c:if test="${user != null}">
 						<li><a href="${path}/member/logout">로그아웃</a></li>
 						<li><a href="${path}/mall/listCart">장바구니</a></li>
-						<li><a href="${path}/member/loginMember">주문배송</a></li>
+						<li><a href="${path}/mall/orderList">주문배송</a></li>
 						<c:if test="${user.verify == 9}">
 							<li><a href="${path}/admin/index">관리자 페이지로가기</a></li>
 						</c:if>

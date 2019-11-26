@@ -1,6 +1,8 @@
 package com.fila.shop.controller;
 
 
+import java.text.DecimalFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -17,6 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fila.shop.dto.CartDTO;
 import com.fila.shop.dto.CartListDTO;
 import com.fila.shop.dto.MemberDTO;
+import com.fila.shop.dto.OrderDTO;
+import com.fila.shop.dto.OrderDetailDTO;
+import com.fila.shop.dto.OrderListDTO;
 import com.fila.shop.dto.PdtCmtListDTO;
 import com.fila.shop.dto.PdtCommentDTO;
 import com.fila.shop.dto.PdtViewDTO;
@@ -69,9 +74,9 @@ public class MallController {
 	@RequestMapping(value = "/mallView/pdtCmtList", method = RequestMethod.GET)
 	public List<PdtCmtListDTO> getPdtCmtList(@RequestParam("pdtCode") int pdtCode) throws Exception {
 	   
-	 List<PdtCmtListDTO> comment = mlService.pdtCmtList(pdtCode);
-	 
-	 return comment;
+		List<PdtCmtListDTO> comment = mlService.pdtCmtList(pdtCode);
+		 
+		return comment;
 	}
 //  상품 댓글 삭제
 	@ResponseBody
@@ -86,25 +91,25 @@ public class MallController {
 		   mlService.deleteCmt(cd);
 		   result = 1;
 	   }
-	 return result;
+	   return result;
 	}
 // 카트 담기
 	@ResponseBody
 	@RequestMapping(value = "/mallView/insertCart", method = RequestMethod.POST)
 	public int insertCart(CartDTO td, HttpSession session) throws Exception {
 	 
-	int result = 0;	
+		int result = 0;	
+		
+		MemberDTO user = (MemberDTO)session.getAttribute("user");
+		System.out.println(user);
+		if(user != null) {
+			System.out.println("일로오나요");
+			td.setUserId(user.getUserId());
+			mlService.insertCart(td);
+			result = 1;
+		}
 	
-	MemberDTO user = (MemberDTO)session.getAttribute("user");
-	System.out.println(user);
-	if(user != null) {
-		System.out.println("일로오나요");
-		td.setUserId(user.getUserId());
-		mlService.insertCart(td);
-		result = 1;
-	}
-
-	return result;
+		return result;
 
 	 
 	}
@@ -112,14 +117,14 @@ public class MallController {
 	@RequestMapping(value = "/listCart", method = RequestMethod.GET)
 	public String getCartList(HttpSession session, Model model) throws Exception {
 	 
-	 MemberDTO user = (MemberDTO)session.getAttribute("user");
-	 String userId = user.getUserId();
+		MemberDTO user = (MemberDTO)session.getAttribute("user");
+		String userId = user.getUserId();
 	 
-	 List<CartListDTO> cartList = mlService.cartList(userId);
+		List<CartListDTO> cartList = mlService.cartList(userId);
 	 
-	 model.addAttribute("cartList", cartList);
+		model.addAttribute("cartList", cartList);
 	 
-	 return "mall/mallCartList";
+		return "mall/mallCartList";
 	}
 // 카트 삭제
 	@ResponseBody
@@ -145,5 +150,67 @@ public class MallController {
 		}
 		
 		return result;  
-	}	
+	}
+// 주문 목록
+	@RequestMapping(value = "/listCart", method = RequestMethod.POST)
+	public String orderInfo(HttpSession session, OrderDTO od, OrderDetailDTO otd) throws Exception {
+		MemberDTO user = (MemberDTO)session.getAttribute("user");
+		String userId = user.getUserId();
+		
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
+		String ymd = ym +  new DecimalFormat("00").format(cal.get(Calendar.DATE));
+		String subNum = "";
+		 
+		for(int i = 1; i <= 6; i ++) {
+			subNum += (int)(Math.random() * 10);
+		}
+		 
+		String orderId = ymd + "_" + subNum;
+		 
+		od.setOrderId(orderId);
+		od.setUserId(userId);
+		  
+		mlService.orderInfo(od);
+		 
+		otd.setOrderId(orderId);   
+		mlService.orderInfoDetail(otd);
+		
+		mlService.deleteAllCart(userId);
+		 
+		return "redirect:mall/orderList";
+	}
+	// 주문 목록
+	@RequestMapping(value = "/orderList", method = RequestMethod.GET)
+	public String getOrderList(HttpSession session, OrderDTO od, Model model) throws Exception {
+	 
+		MemberDTO user = (MemberDTO)session.getAttribute("user");
+		String userId = user.getUserId();
+		 
+		od.setUserId(userId);
+		 
+		List<OrderDTO> orderList = mlService.orderList(od);
+		System.out.println("리스트 = "+orderList); 
+		model.addAttribute("orderList", orderList);
+		return "mall/mallOrderList";
+	}
+	
+	// 주문 상세 목록
+	@RequestMapping(value = "/orderView", method = RequestMethod.GET)
+	public String orderListView(HttpSession session,
+	      @RequestParam("orderCode") String orderId, OrderDTO od, Model model) throws Exception {
+	 
+		MemberDTO user = (MemberDTO)session.getAttribute("user");
+		String userId = user.getUserId();
+		 
+		od.setUserId(userId);
+		od.setOrderId(orderId);
+		 
+		List<OrderListDTO> orderView = mlService.orderViewList(od);
+		 
+		model.addAttribute("orderView", orderView);
+		
+		return "mall/mallOrderListView";
+	}
 }

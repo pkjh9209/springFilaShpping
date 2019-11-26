@@ -6,6 +6,7 @@
 	<ul class="nav flex-column">
 		<li class="nav-item"><a class="nav-link px-md-5" href="${path}/admin/pdtRegister">상품등록</a></li>
 		<li class="nav-item"><a class="nav-link px-md-5" href="${path}/admin/pdtList">상품목록</a></li>
+		<li class="nav-item"><a class="nav-link px-md-5" href="${path}/mall/orderList">주문목록</a></li>
 		<li class="nav-item"><a class="nav-link px-md-5" href="#">상품소감</a></li>
 		<li class="nav-item"><a class="nav-link px-md-5" href="#">유저목록</a></li>
 	</ul><br>
