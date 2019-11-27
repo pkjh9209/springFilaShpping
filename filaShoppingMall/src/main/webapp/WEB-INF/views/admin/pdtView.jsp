@@ -51,7 +51,7 @@
 						<p>${viewPd.pdtThumbNail}</p>
 					</div>
 
-			<div class="inputArea">
+					<div class="inputArea">
 						<button type="button" id="update_Btn" class="btn btn-warning">수정</button>
 						<button type="button" id="delete_Btn" class="btn btn-danger">삭제</button>
 	

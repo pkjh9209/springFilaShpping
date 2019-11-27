@@ -181,7 +181,7 @@
 		<hr>
 		</c:if>
 		<div class="pdtCmtList">
-			<h1>User Comment</h1>
+			<h1 class="cmt_title">User Comment</h1>
 			<ul>
 			</ul> 
 			<script type="text/javascript">

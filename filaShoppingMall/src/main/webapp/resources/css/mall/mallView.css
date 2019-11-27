@@ -132,3 +132,7 @@
 .total_price_02{
 	float: right;
 }
+.cmt_title{
+	font-size: 24px;
+    margin-bottom: 12px;
+}

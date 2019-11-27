@@ -11,7 +11,8 @@
                    userId, 
                    userPw, 
                    userName, 
-                   userTel, 
+                   userTel,
+                   userBirth,
                    rgdate 
             ) 
             VALUES 
@@ -19,7 +20,8 @@
                    #{userId}, 
                    #{userPw}, 
                    #{userName}, 
-                   #{userTel}, 
+                   #{userTel},
+                   #{userBirth},
                    now() 
             );
 		</insert>

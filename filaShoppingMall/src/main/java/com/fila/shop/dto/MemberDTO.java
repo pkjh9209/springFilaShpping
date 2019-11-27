@@ -12,6 +12,7 @@ public class MemberDTO {
 	private String userPw;
 	private String userName;
 	private String userTel;
+	private String userBirth;
 	private String userAdd1;
 	private String userAdd2;
 	private String userAdd3;
