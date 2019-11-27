@@ -89,3 +89,46 @@
     margin-bottom: 5px;
     vertical-align: text-bottom;
 }
+
+.comment_btn{
+	margin-top:10px;
+}
+.cmt_list{
+	padding: 15px 20px;
+    background-color: #f6f6f6;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.userInfo{
+	margin-bottom:6px;
+}
+.userName{
+    font-size: 18px;
+    font-weight: 600;
+    padding-right: 10px;
+}
+.date{
+	font-size: 12px;
+}
+.user_cmt_icon{
+	font-size: 14px;
+    padding-right: 5px;
+}
+.userInfo button{
+	border: none;
+    background: none;
+    cursor: pointer;
+    float: right;
+}
+.fa-pen,.fa-trash-alt{
+	font-size: 12px;
+}
+.replyContent{
+	font-size: 14px;
+}
+.total_price_wp{
+    height: 35px;
+}
+.total_price_02{
+	float: right;
+}

@@ -1,0 +1,17 @@
+.section{
+	width: 1000px;
+	margin: auto;
+}
+.cart_list{
+	
+}
+.thumb img{
+	width: 100px;
+	height: 100px;
+}
+.table{
+	text-align: center;
+}
+.orderInfo{
+	display: none;
+}

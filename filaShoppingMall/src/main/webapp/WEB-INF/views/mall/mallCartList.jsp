@@ -5,13 +5,13 @@
 <head>
 	<title>fila-main</title>
 	<%@include file ="../common/head.jsp" %>
-	<link rel="stylesheet" href="${path}/resources/css/mall/mallList.css">
+	<link rel="stylesheet" href="${path}/resources/css/mall/mallCartList.css">
 </head>
 <body>
 	<%@include file ="../common/nav.jsp" %>
 	<div class="page_navigater"></div>
 	<div class="section">
-		<ul>
+				<ul>
 			<li>
 				<div class="allCheck">
 					<input type="checkbox" name="allCheck" id="allCheck" />
@@ -59,64 +59,86 @@
 				</div>
 			</li>
 			<c:set var="sum" value="0" />
-			<c:forEach items="${cartList}" var="cartList">
-				<li>
-					<div class="checkBox">
-						<input type="checkbox" name="chBox" class="chBox" data-cartNum="${cartList.cartNum}" />
-						<script type="text/javascript">
-							$("#allCheck").click(function() {
-								var chk = $("#allCheck").prop("checked");
-								if (chk) {
-									$(".chBox").prop("checked", true);
-								} else {
-									$(".chBox").prop("checked", false);
-								}
-							});
-						</script>
-					</div>
-					<div class="thumb">
-						<img src="${path}${cartList.pdtThumbNail}" />
-					</div>
-					<div class="pdtInfo">
-						<span>상품명 : </span>${cartList.pdtName}<br /> 
-						<span>개당 가격: </span>
-						<fmt:formatNumber pattern="###,###,###" value="${cartList.pdtPrice}" /><br />
-						<span>구입 수량 : </span>${cartList.cartVolume}<br />
-						<span>최종가격 : </span>
-						<fmt:formatNumber pattern="###,###,###" value="${cartList.pdtPrice * cartList.cartVolume}" />
-					</div>
-					<div class="cart_delete">
-						<button type="button" class="delete_${cartList.cartNum}_btn" data-cartNum="${cartList.cartNum}">삭제</button>
-						<script type="text/javascript">
-							$(".delete_${cartList.cartNum}_btn").click(function(){
-								
-								var confirm_val = confirm("정말 삭제하시겠습니까?");
-								
-								if(confirm_val) {
-									var checkArr = new Array();
-								  
-									checkArr.push($(this).attr("data-cartNum"));
-								             
-									$.ajax({
-										url : "/shop/mall/deleteCart",
-										type : "post",
-										data : { chbox : checkArr },
-										success : function(result){
-											if(result == 1) {            
-												location.href = "/shop/mall/listCart";
-											} else {
-												alert("삭제 실패");
-											}
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col"></th>
+						<th scope="col">사진</th>
+						<th scope="col">상품명</th>
+						<th scope="col">상품금액</th>
+						<th scope="col">구입수량</th>
+						<th scope="col">최종금액</th>
+						<th scope="col">개별삭제</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${cartList}" var="cartList">
+						<tr>
+							<th scope="row">					
+								<div class="checkBox">
+									<input type="checkbox" name="chBox" class="chBox" data-cartNum="${cartList.cartNum}" />
+									<script type="text/javascript">
+								$("#allCheck").click(function() {
+									var chk = $("#allCheck").prop("checked");
+									if (chk) {
+										$(".chBox").prop("checked", true);
+									} else {
+										$(".chBox").prop("checked", false);
+									}
+								});
+								</script>
+								</div>
+							</th>
+							<td>
+								<div class="thumb"><img src="${path}${cartList.pdtThumbNail}" /></div>
+							</td>
+							<td>
+								${cartList.pdtName}
+							</td>
+							<td>
+								<fmt:formatNumber pattern="###,###,###" value="${cartList.pdtPrice}" />
+							</td>
+							<td>
+								${cartList.cartVolume}
+							</td>
+							<td>
+								<fmt:formatNumber pattern="###,###,###" value="${cartList.pdtPrice * cartList.cartVolume}" />
+						    </td>
+						    <td>
+								<div class="cart_delete">
+									<button type="button" class="delete_${cartList.cartNum}_btn" data-cartNum="${cartList.cartNum}">삭제</button>
+									<script type="text/javascript">
+									$(".delete_${cartList.cartNum}_btn").click(function(){
+										var confirm_val = confirm("정말 삭제하시겠습니까?");
+										
+										if(confirm_val) {
+											var checkArr = new Array();
+										  
+											checkArr.push($(this).attr("data-cartNum"));
+										             
+											$.ajax({
+												url : "/shop/mall/deleteCart",
+												type : "post",
+												data : { chbox : checkArr },
+												success : function(result){
+													if(result == 1) {            
+														location.href = "/shop/mall/listCart";
+													} else {
+														alert("삭제 실패");
+													}
+												}
+											});
 										}
+										
 									});
-								}
-								
-							});
-						</script>
-					</div>
-				</li>
-				<c:set var="sum" value="${sum + (cartList.pdtPrice * cartList.cartVolume)}" />
-			</c:forEach>
+									</script>
+								</div>
+							</td>
+						</tr>
+						<c:set var="sum" value="${sum + (cartList.pdtPrice * cartList.cartVolume)}" />
+					</c:forEach>
+				</tbody>
+			</table>
 		</ul>
 		<div class="listResult">
 			<div class="sum">

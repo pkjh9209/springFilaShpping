@@ -44,6 +44,7 @@ public class MallController {
 		List<PdtViewDTO> list = null;
 		list = mlService.list(cateCodeRef);
 		int categoryPage = cateCodeRef;
+		System.out.println("categoryPage = "+categoryPage);
 		
 		model.addAttribute("categoryPage",categoryPage);
 		model.addAttribute("list", list);
@@ -103,7 +104,6 @@ public class MallController {
 		MemberDTO user = (MemberDTO)session.getAttribute("user");
 		System.out.println(user);
 		if(user != null) {
-			System.out.println("일로오나요");
 			td.setUserId(user.getUserId());
 			mlService.insertCart(td);
 			result = 1;

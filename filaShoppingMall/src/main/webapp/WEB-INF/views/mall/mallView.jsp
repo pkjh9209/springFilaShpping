@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 	<title>FILA-상품페이지</title>
@@ -11,24 +11,23 @@
 		
 		var pdtNum = ${viewPd.pdtNum};
 		$.getJSON("/shop/mall/mallView/pdtCmtList" + "?pdtCode=" + pdtNum, function(data){
-			
 			var str = "";
-			 
 			$(data).each(function(){
-			  
+			  	
 				var rgdate = new Date(this.rgdate);
 				rgdate = rgdate.toLocaleDateString("ko-US")
 				  
-				str += "<li data-pdtNum='" + this.pdtNum + "'>"
+				str += "<li class='cmt_list' data-pdtNum='" + this.pdtNum + "'>"
 				    + "<div class='userInfo'>"
+				    + "<i class='fas fa-user-circle user_cmt_icon'></i>"
 				    + "<span class='userName'>" + this.userId + "</span>"
 				    + "<span class='date'>" + rgdate + "</span>"
+				    + "<button type='button' class='delete_btn' data-cmtPdtNum='" + this.cmtPdtNum + "'><i class='fas fa-trash-alt'></i></button>"
+				    + "<button type='button' class='update_btn' data-cmtPdtNum='" + this.cmtPdtNum + "'><i class='fas fa-pen'></i></button>"
 				    + "</div>"
 				    + "<div class='replyContent'>" + this.cmtDes + "</div>"
 				    
 				    + "<div class='replyFooter'>"
-				    + "<button type='button' class='update_btn' data-cmtPdtNum='" + this.cmtPdtNum + "'>수정</button>"
-				    + "<button type='button' class='delete_btn' data-cmtPdtNum='" + this.cmtPdtNum + "'>삭제</button>"
 				    + "</div>"
 				    
 				    + "</li>";           
@@ -51,7 +50,7 @@
 			</div>
 			<div class="mr15">
 				<p class="pdt_info_tt">상품 가격</p>
-				<p class="pdt_price ft-size-24">${viewPd.pdtPrice} 원</p>
+				<p class="pdt_price ft-size-24"><fmt:formatNumber pattern="###,###,###" value="${viewPd.pdtPrice}" /> won</p>
 			</div>
 			<div class="mr15">
 				<p class="pdt_info_tt">제품 번호</p>
@@ -91,7 +90,10 @@
 				</script>
 			</div>
 		<hr>
-		<div><span>총결제 금액</span> <span></span></div>
+		<div class="total_price_wp">
+			<span class="total_price_01">총결제 금액</span> 
+			<span class="total_price_02"><fmt:formatNumber pattern="###,###,###" value="${viewPd.pdtPrice}" /> 원</span>
+		</div>
 		<div class="addToCart">
 			<button class="cart_btn" type="button">카트에 담기</button>
 			<script type="text/javascript">
@@ -124,6 +126,7 @@
 				});
 							</script>
 			<button class="buy_btn" type="button">바로 결제하기</button>
+			
 		</div>
 		</div>
 	</div>
@@ -144,7 +147,7 @@
 					<textarea class="form-control" id="cmtDes" name="cmtDes"></textarea>
 				</div>
 				<div class="input_area">
-					<button type="button" class="btn btn-primary" id="comment_btn">소감 남기기</button>
+					<button type="button" class="btn btn-primary comment_btn" id="comment_btn">소감 남기기</button>
 					<script>
 						$("#comment_btn").click(function(){
 						 
@@ -175,8 +178,10 @@
 				</div>
 			</form>
 		</div>
+		<hr>
 		</c:if>
 		<div class="pdtCmtList">
+			<h1>User Comment</h1>
 			<ul>
 			</ul> 
 			<script type="text/javascript">
@@ -193,9 +198,8 @@
 							type : "post",
 							data : data,
 							success : function(result){
-								console.log('result='+result);
 								if(result == 1){
-									pdtCmtList();	
+									pdtCmtList(result);	
 								}else{
 									alert("본인이 작성한 댓글만 삭제가 가능합니다.");
 								}
