@@ -110,12 +110,10 @@ public class MallController {
 		}
 	
 		return result;
-
-	 
 	}
 // 카트 목록
-	@RequestMapping(value = "/listCart", method = RequestMethod.GET)
-	public String getCartList(HttpSession session, Model model) throws Exception {
+	@RequestMapping(value = "/mallCartList", method = RequestMethod.GET)
+	public void getCartList(HttpSession session, Model model) throws Exception {
 	 
 		MemberDTO user = (MemberDTO)session.getAttribute("user");
 		String userId = user.getUserId();
@@ -123,8 +121,6 @@ public class MallController {
 		List<CartListDTO> cartList = mlService.cartList(userId);
 	 
 		model.addAttribute("cartList", cartList);
-	 
-		return "mall/mallCartList";
 	}
 // 카트 삭제
 	@ResponseBody
@@ -152,7 +148,7 @@ public class MallController {
 		return result;  
 	}
 // 주문 목록
-	@RequestMapping(value = "/listCart", method = RequestMethod.POST)
+	@RequestMapping(value = "/mallCartList", method = RequestMethod.POST)
 	public String orderInfo(HttpSession session, OrderDTO od, OrderDetailDTO otd) throws Exception {
 		MemberDTO user = (MemberDTO)session.getAttribute("user");
 		String userId = user.getUserId();
@@ -179,11 +175,11 @@ public class MallController {
 		
 		mlService.deleteAllCart(userId);
 		 
-		return "redirect:mall/orderList";
+		return "redirect:mallOrderList";
 	}
 	// 주문 목록
-	@RequestMapping(value = "/orderList", method = RequestMethod.GET)
-	public String getOrderList(HttpSession session, OrderDTO od, Model model) throws Exception {
+	@RequestMapping(value = "/mallOrderList", method = RequestMethod.GET)
+	public void getOrderList(HttpSession session, OrderDTO od, Model model) throws Exception {
 	 
 		MemberDTO user = (MemberDTO)session.getAttribute("user");
 		String userId = user.getUserId();
@@ -192,7 +188,6 @@ public class MallController {
 		 
 		List<OrderDTO> orderList = mlService.orderList(od);
 		model.addAttribute("orderList", orderList);
-		return "mall/mallOrderList";
 	}
 	
 	// 주문 상세 목록

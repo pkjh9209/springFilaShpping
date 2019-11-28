@@ -35,7 +35,7 @@
 	</script>
 </head>
 <body>
-	<section class="section" id="content">
+	<div class="section" id="content">
 		<div class="logo_wp">
 			<a href="${path}/"><img alt="로고이미지" src="${path}/resources/img/fila-9-logo.png"></a>
 		</div>
@@ -73,7 +73,7 @@
 			</div>
 			<div class="input_area">
 				<p>이메일</p>
-				<input type="text" id="userName" name="userEmail"/>      
+				<input type="text" id="userEmail" name="userEamil"/>      
 			</div>
 			<div class="input_area">	 	
 				<p>휴대전화</p>
@@ -97,6 +97,6 @@
 		<input class="insert_btn" type="submit" value="회원가입"/>
 		
 		</form>   
-	</section>
+	</div>
 </body>
 </html>

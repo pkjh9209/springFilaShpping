@@ -47,7 +47,7 @@
 								success : function(result){
 									
 								 	if(result == 1) {          
-										location.href = "/shop/mall/listCart";
+										location.href = "/shop/mall/mallCartList";
 									} else {
 										alert("삭제 실패");
 									}
@@ -74,19 +74,19 @@
 				<tbody>
 					<c:forEach items="${cartList}" var="cartList">
 						<tr>
-							<th scope="row">					
+							<th scope="row">
 								<div class="checkBox">
 									<input type="checkbox" name="chBox" class="chBox" data-cartNum="${cartList.cartNum}" />
 									<script type="text/javascript">
-								$("#allCheck").click(function() {
-									var chk = $("#allCheck").prop("checked");
-									if (chk) {
-										$(".chBox").prop("checked", true);
-									} else {
-										$(".chBox").prop("checked", false);
-									}
-								});
-								</script>
+										$("#allCheck").click(function() {
+											var chk = $("#allCheck").prop("checked");
+											if (chk) {
+												$(".chBox").prop("checked", true);
+											} else {
+												$(".chBox").prop("checked", false);
+											}
+										});
+									</script>
 								</div>
 							</th>
 							<td>
@@ -122,7 +122,7 @@
 												data : { chbox : checkArr },
 												success : function(result){
 													if(result == 1) {            
-														location.href = "/shop/mall/listCart";
+														location.href = "/shop/mall/mallCartList";
 													} else {
 														alert("삭제 실패");
 													}

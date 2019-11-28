@@ -8,16 +8,16 @@
 				</div>
 				<div class="sub_wp_rt">	
 					<c:if test="${user == null}">
-						<a href="${path}/mall/listCart">장바구니</a>
-						<a href="${path}/mall/orderList">주문배송</a>
+						<a href="${path}/mall/mallCartList">장바구니</a>
+						<a href="${path}/mall/mallOrderList">주문배송</a>
 						<a href="${path}/member/insertMember">회원가입</a>
 						<a href="${path}/member/loginMember">로그인</a>
 						
 					</c:if>
 					<c:if test="${user != null}">
 						<li><a href="${path}/member/logout">로그아웃</a></li>
-						<li><a href="${path}/mall/listCart">장바구니</a></li>
-						<li><a href="${path}/mall/orderList">주문배송</a></li>
+						<li><a href="${path}/mall/mallOrderList">주문배송</a></li>
+						<li><a href="${path}/mall/mallCartList">장바구니</a></li>
 						<c:if test="${user.verify == 9}">
 							<li><a href="${path}/admin/index">관리자 페이지로가기</a></li>
 						</c:if>
@@ -30,7 +30,7 @@
 			<div class="nav_wrap">	
 				<div class="lt_nav">
 					<div class="logo_wrap">
-						<img src="${path}/resources/img/FLIA_LOGO.png" alt="로고이미지"/>
+						<a href="${path}/"><img src="${path}/resources/img/fila-9-logo.png" alt="로고이미지"/></a>
 					</div>
 					<ul>
 						<li><a href="${path}/mall/mallList?ref=1">OUTER</a></li>

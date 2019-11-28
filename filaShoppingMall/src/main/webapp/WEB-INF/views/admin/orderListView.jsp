@@ -22,7 +22,7 @@
 		   <p><span>가격</span><fmt:formatNumber pattern="###,###,###" value="${orderListView.totalPrice}" /> 원</p>
 		   <p><span>배송상태</span>${orderListView.deliveryStatus}</p>
 		   <div class="deliveryChange">
-			 <form role="form" method="post" class="deliveryForm">
+			  <form role="form" method="post" class="deliveryForm">
 			 
 			  <input type="hidden" name="orderId" value="${orderListView.orderId}" />
 			  <input type="hidden" name="deliveryStatus" class="delivery" value="" />

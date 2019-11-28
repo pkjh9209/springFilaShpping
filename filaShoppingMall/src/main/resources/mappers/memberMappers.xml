@@ -6,24 +6,26 @@
   
 		<!-- 회원가입 -->
 		<insert id="memberInsert">
-			INSERT INTO fila_member 
-            ( 
-                   userId, 
-                   userPw, 
-                   userName, 
-                   userTel,
-                   userBirth,
-                   rgdate 
-            ) 
-            VALUES 
-            ( 
-                   #{userId}, 
-                   #{userPw}, 
-                   #{userName}, 
-                   #{userTel},
-                   #{userBirth},
-                   now() 
-            );
+			INSERT INTO fila_member
+			(
+				   userId,
+				   userPw,
+				   userName,
+				   userTel,
+				   userBirth,
+				   userEamil,
+				   rgdate
+			)
+			VALUE
+			(
+				   #{userId}, 
+				   #{userPw}, 
+				   #{userName}, 
+				   #{userTel}, 
+				   #{userBirth}, 
+				   #{userEamil}, 
+				   now()
+	         )
 		</insert>
 		
   		<!-- 로그인 -->
@@ -32,6 +34,8 @@
 			       userPw,
 			       userName,
 			       userTel,
+                   userBirth,
+                   userEamil,
 			       userAdd1,
 			       userAdd2,
 			       userAdd3,
@@ -45,7 +49,7 @@
 		<select id="idCheck" resultType="com.fila.shop.dto.MemberDTO">
 			SELECT userId 
 			FROM   fila_member
-			WHERE  userId = #{userId};
+			WHERE  userId = #{userId}
 		</select>
 		
 </mapper>

@@ -170,7 +170,7 @@ public class AdminController {
 	 
 		 od.setOrderId(orderId);  
 		 List<OrderListDTO> orderListView = adService.orderListView(od);
-		 
+		 System.out.println(orderListView);
 		 model.addAttribute("orderListView", orderListView);
 	}
 //  배송상태 변경

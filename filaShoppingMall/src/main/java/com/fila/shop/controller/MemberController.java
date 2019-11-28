@@ -68,10 +68,8 @@ public class MemberController {
 		if(login == null) {
 			session.setAttribute("user", null);
 			rttr.addFlashAttribute("msg",false);
-			System.out.println("널로오는가");
 		}else{
 			session.setAttribute("user", login);
-			System.out.println("성공하는가");
 		}
 		
 		return "redirect:/";
