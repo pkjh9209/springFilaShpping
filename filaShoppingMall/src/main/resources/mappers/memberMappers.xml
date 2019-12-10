@@ -13,7 +13,7 @@
 				   userName,
 				   userTel,
 				   userBirth,
-				   userEamil,
+				   userEmail,
 				   rgdate
 			)
 			VALUE
@@ -23,7 +23,7 @@
 				   #{userName}, 
 				   #{userTel}, 
 				   #{userBirth}, 
-				   #{userEamil}, 
+				   #{userEmail}, 
 				   now()
 	         )
 		</insert>
@@ -35,10 +35,7 @@
 			       userName,
 			       userTel,
                    userBirth,
-                   userEamil,
-			       userAdd1,
-			       userAdd2,
-			       userAdd3,
+                   userEmail,
 			       rgdate,
 			       verify
 			FROM   fila_member

@@ -23,10 +23,11 @@
 	display: none;
 }
 .page_navigater{
-	width:100%;
-	height:20px;
-	background-color:#ccc;
-	text-align: center;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #f1f3f6;
+    background-color: #fff;
+    text-align: center;
 }
 .pdt_content{
 	padding : 10px;

@@ -44,7 +44,6 @@ public class MallController {
 		List<PdtViewDTO> list = null;
 		list = mlService.list(cateCodeRef);
 		int categoryPage = cateCodeRef;
-		System.out.println("categoryPage = "+categoryPage);
 		
 		model.addAttribute("categoryPage",categoryPage);
 		model.addAttribute("list", list);
@@ -67,7 +66,6 @@ public class MallController {
 	 
 		MemberDTO md = (MemberDTO)session.getAttribute("user");
 		pdtCmt.setUserId(md.getUserId());
-		
 		mlService.insertCmt(pdtCmt);
 	} 
 //  상품 댓글 리스트

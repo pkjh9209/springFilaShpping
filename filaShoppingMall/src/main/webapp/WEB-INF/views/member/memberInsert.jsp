@@ -73,7 +73,7 @@
 			</div>
 			<div class="input_area">
 				<p>이메일</p>
-				<input type="text" id="userEmail" name="userEamil"/>      
+				<input type="text" id="userEmail" name="userEmail"/>
 			</div>
 			<div class="input_area">	 	
 				<p>휴대전화</p>
