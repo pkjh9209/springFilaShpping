@@ -10,7 +10,11 @@
 <body>
 	<%@include file ="../common/nav.jsp" %>
 	<div class="page_navigater">
-		
+		<ul>
+			<c:forEach items="${subNav}" var="subNav">
+				<li><a href="${path}/mall/mallView?pdtCode=${subNav.pdtNum}">${subNav.cateName}</a></li>
+			</c:forEach>
+		</ul>
 	</div>
 	<div class="section">
 		<h1>OUTER</h1>

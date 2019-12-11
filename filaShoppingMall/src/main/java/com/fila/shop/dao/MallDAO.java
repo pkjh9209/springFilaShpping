@@ -24,6 +24,10 @@ public class MallDAO {
 	public List<PdtViewDTO> list(int cateCodeRef) throws Exception{
 		return ss.selectList("mall.mallList",cateCodeRef);
 	}
+	//상품리스트 서브
+	public List<PdtViewDTO> listSub(int level) throws Exception{
+		return ss.selectList("mall.mallListSub",level);
+	}
 	//상품조회
 	public ProductDTO mallView(int pdtCode) throws Exception{
 		return ss.selectOne("admin.pdtView",pdtCode);

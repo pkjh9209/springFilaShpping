@@ -33,10 +33,10 @@
 						<a href="${path}/"><img src="${path}/resources/img/fila-9-logo.png" alt="로고이미지"/></a>
 					</div>
 					<ul>
-						<li><a href="${path}/mall/mallList?ref=1">OUTER</a></li>
-						<li><a href="${path}/mall/mallList?ref=2">TOP</a></li>
-						<li><a href="${path}/mall/mallList?ref=3">BOTTOM</a></li>
-						<li><a href="${path}/mall/mallList?ref=4">ACC</a></li>
+						<li><a href="${path}/mall/mallList?ref=1&level=1">OUTER</a></li>
+						<li><a href="${path}/mall/mallList?ref=2&level=2">TOP</a></li>
+						<li><a href="${path}/mall/mallList?ref=3&level=3">BOTTOM</a></li>
+						<li><a href="${path}/mall/mallList?ref=4&level=4">ACC</a></li>
 					</ul>
 				</div>
 				<div class="rt_nav">

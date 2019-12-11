@@ -38,3 +38,8 @@
     color: #000;
     font-size: 14px;
 }
+
+
+.page_navigater ul li{
+	float:left;
+}

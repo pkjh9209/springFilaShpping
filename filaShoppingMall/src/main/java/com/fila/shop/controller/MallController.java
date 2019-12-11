@@ -3,6 +3,7 @@ package com.fila.shop.controller;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -39,17 +40,22 @@ public class MallController {
 
 //	샵 페이지 화면
 	@RequestMapping(value = "/mallList",method = RequestMethod.GET)
-	public String mallList(@RequestParam("ref") int cateCodeRef,Model model) throws Exception {
+	public String mallList(@RequestParam("ref") int cateCodeRef,@RequestParam("level") int level,Model model) throws Exception {
 		
 		List<PdtViewDTO> list = null;
+		List<PdtViewDTO> subNav = null;
 		list = mlService.list(cateCodeRef);
+		subNav = mlService.listSub(level);
+		
 		int categoryPage = cateCodeRef;
 		
-		model.addAttribute("categoryPage",categoryPage);
+		
 		model.addAttribute("list", list);
+		model.addAttribute("subNav", subNav);
 		return "mall/mallList";
 	}
-//  상품 페이지 조회
+
+	//  상품 페이지 조회
 	@RequestMapping(value = "/mallView", method = RequestMethod.GET)
 	public String pdtView(@RequestParam("pdtCode") int pdtCode, Model model) throws Exception {
 
@@ -192,11 +198,8 @@ public class MallController {
 	@RequestMapping(value = "/mallOrderListView", method = RequestMethod.GET)
 	public void orderListView(HttpSession session,
 	      @RequestParam("orderCode") String orderId, OrderDTO od, Model model) throws Exception {
-		System.out.println("orderId = "+orderId);
 		MemberDTO user = (MemberDTO)session.getAttribute("user");
-		System.out.println("user = "+user);
 		String userId = user.getUserId();
-		System.out.println("userId = "+userId); 
 		od.setUserId(userId);
 		od.setOrderId(orderId);
 		 

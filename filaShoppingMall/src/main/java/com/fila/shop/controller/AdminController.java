@@ -148,8 +148,9 @@ public class AdminController {
 
 //	상품 삭제
 	@RequestMapping(value = "/pdtDelete", method = RequestMethod.POST)
-	public String pdtDelete(@RequestParam("pdtNum") int pdtNum) throws Exception {
-		adService.pdtDelete(pdtNum);
+	public String pdtDelete(@RequestParam("pdtNum") String pdtNum) throws Exception {
+		System.out.println(pdtNum);
+		adService.pdtDelete(Integer.parseInt(pdtNum));
 
 		return "redirect:/admin/pdtList";
 	}

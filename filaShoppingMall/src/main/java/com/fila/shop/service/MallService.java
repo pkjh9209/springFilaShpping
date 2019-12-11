@@ -24,6 +24,10 @@ public class MallService {
 	public List<PdtViewDTO> list(int cateCodeRef) throws Exception{
 		return dao.list(cateCodeRef);
 	}
+	//상품리스트 서브
+	public List<PdtViewDTO> listSub(int level) throws Exception{
+		return dao.listSub(level);
+	}
 	//상품조회
 	public ProductDTO mallView(int pdtCode) throws Exception{
 		return dao.mallView(pdtCode);
