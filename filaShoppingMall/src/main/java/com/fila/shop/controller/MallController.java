@@ -46,12 +46,21 @@ public class MallController {
 		List<PdtViewDTO> subNav = null;
 		list = mlService.list(cateCodeRef);
 		subNav = mlService.listSub(level);
-		
-		int categoryPage = cateCodeRef;
-		
+	
 		
 		model.addAttribute("list", list);
 		model.addAttribute("subNav", subNav);
+		//≈∏¿Ã∆≤ 
+		if(cateCodeRef == 1) {
+			model.addAttribute("tt", "OUTER");
+		}else if(cateCodeRef == 2) {
+			model.addAttribute("tt", "TOP");
+		}else if(cateCodeRef == 3) {
+			model.addAttribute("tt", "BOTTOM");
+		}else if(cateCodeRef == 4) {
+			model.addAttribute("tt", "ACC");
+		}
+		
 		return "mall/mallList";
 	}
 

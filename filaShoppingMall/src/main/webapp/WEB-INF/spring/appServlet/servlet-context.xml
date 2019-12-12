@@ -52,7 +52,7 @@
 	<!-- ck에디터 파일 업로드 경로 순서를 바꿀시 안됨.. -->
 	<resources mapping="/ckUpload/**" location="/resources/ckUpload/" />
 	
-	<!-- 어드민 계정인터셉터 -->
+	<!-- 어드민 인터셉터 -->
 	<interceptors>
 		<interceptor>
 			<mapping path="/admin/**" />

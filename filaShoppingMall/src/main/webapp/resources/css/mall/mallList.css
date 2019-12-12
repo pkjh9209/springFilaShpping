@@ -43,3 +43,10 @@
 .page_navigater ul li{
 	float:left;
 }
+
+.sub_menu{
+    color: #b2b2b2;
+    font-size: 14px;
+    line-height: 2.6em;
+    padding: 7px;
+}
