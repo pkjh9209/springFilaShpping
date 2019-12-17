@@ -8,10 +8,10 @@
 	<link rel="stylesheet" href="${path}/resources/css/mall/mallView.css">
 	<script type="text/javascript">
 	function pdtCmtList() {
-		
 		var pdtNum = ${viewPd.pdtNum};
 		$.getJSON("/shop/mall/mallView/pdtCmtList" + "?pdtCode=" + pdtNum, function(data){
 			var str = "";
+			console.log(data);
 			$(data).each(function(){
 			  	
 				var rgdate = new Date(this.rgdate);
@@ -35,7 +35,7 @@
 			$(".pdtCmtList ul").html(str);
 		});
 	}
-</script>
+	</script>
 </head>
 <body>
 	<%@include file ="../common/nav.jsp" %>

@@ -8,10 +8,13 @@
 	<link rel="stylesheet" href="${path}/resources/css/mall/mallList.css">
 </head>
 <body>
-	<%@include file ="../common/nav.jsp" %>
-	<div class="page_navigater"></div>
-	<div class="section">
-		<h1>어드민 주문목록</h1>
+	<%@include file ="adminNav.jsp" %>
+	<div class="pd-rt-120 col-sm-9 float-right">
+		<div>
+			<p class="mt-t10">FLIA ADMIN PAGE</p>
+			<h1 class="ad_page_in">관리자 페이지 - 주문목록</h1>
+		</div>
+		<hr>
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>

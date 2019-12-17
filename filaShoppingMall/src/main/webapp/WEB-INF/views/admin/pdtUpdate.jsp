@@ -75,7 +75,7 @@
 	<div class="pd-rt-120 col-sm-9 float-right">
 		<div>
 			<p class="mt-t10">FLIA ADMIN PAGE</p>
-			<h1 class="ad_page_in">관리자 페이지 - 상품등록</h1>
+			<h1 class="ad_page_in">관리자 페이지 - 상품수정</h1>
 		</div>
 		<hr>
 		<form action="${path}/admin/pdtUpdateProc" method="post" enctype="multipart/form-data">

@@ -8,6 +8,5 @@
 		<li class="nav-item"><a class="nav-link px-md-5" href="${path}/admin/pdtList">상품목록</a></li>
 		<li class="nav-item"><a class="nav-link px-md-5" href="${path}/admin/orderList">주문목록</a></li>
 		<li class="nav-item"><a class="nav-link px-md-5" href="${path}/admin/allCmt">상품소감</a></li>
-		<li class="nav-item"><a class="nav-link px-md-5" href="#">유저목록</a></li>
 	</ul><br>
 </div>

@@ -9,43 +9,48 @@
 </head>
 	<body>
 		<%@include file ="adminNav.jsp" %>
-			<div class="container_ad col-sm-9 float-right">
-				<h1>상품 조회 페이지</h1>
+			<div class="pd-rt-120 col-sm-9 float-right">
+					<div>
+						<p class="mt-t10">FLIA ADMIN PAGE</p>
+						<h1 class="ad_page_in">관리자 페이지 - 상품조회</h1>
+					</div>
+					<hr>
 				<form id="viewForm" action="${path}/admin/pdtUpdate" method="post" autocomplete="off">
-					<div class="inputArea"> 
+					<div class="wh-50 mb-9 float-left pd-lr-20"> 
 						<label>1차 분류</label>
-						<span class="category1">${viewPd.pdtSection}</span>        
+						<span class="category1 form-control">${viewPd.pdtSection}</span>  
+					</div>
+					<div class="wh-50 mb-9 float-left pd-lr-20">       
 						<label>2차 분류</label>
-						<span class="category2">${viewPd.cateName}</span>
+						<span class="category2 form-control">${viewPd.cateName}</span>
 					</div>
-				
 					<input type="hidden" name="pdtNum" value="${viewPd.pdtNum}" readonly="readonly">					
-					<div>
+					<div class="pd-lr-20">
 						<p>제품번호</p>
-						<p>${viewPd.pdtNum}</p>
+						<p class="form-control">${viewPd.pdtNum}</p>
 					</div>
-					<div>
+					<div class="pd-lr-20">
 						<p>상품명</p>
-						<p>${viewPd.pdtName}</p>
+						<p class="form-control">${viewPd.pdtName}</p>
 					</div>
-					<div>
+					<div class="pd-lr-20">
 						<p>상품 수량</p>
-						<p>${viewPd.pdtVolume}</p>
+						<p class="form-control">${viewPd.pdtVolume}</p>
 					</div>
-					<div>
+					<div class="pd-lr-20">
 						<p>상품 가격</p>
-						<p>${viewPd.pdtPrice}</p>
+						<p class="form-control">${viewPd.pdtPrice}</p>
 					</div>
-					<div>
+					<div class="pd-lr-20">
 						<p>상품 소개</p>
 						<div>${viewPd.pdtDes}</div>
 					</div>
-					<div>
+					<div class="pd-lr-20">
 						<p>원본 이미지</p>
 						<img src="${path}${viewPd.pdtImg}" alt="썸네일 이미지">
 						<p>${viewPd.pdtImg}</p>
 					</div>
-					<div>
+					<div class="pd-lr-20">
 						<p>썸네일 이미지</p>
 						<img src="${path}${viewPd.pdtThumbNail}" alt="썸네일 이미지">
 						<p>${viewPd.pdtThumbNail}</p>

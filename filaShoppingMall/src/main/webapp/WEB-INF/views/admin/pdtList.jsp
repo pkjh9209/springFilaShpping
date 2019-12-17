@@ -12,7 +12,11 @@
 	<body>
 		<%@include file ="adminNav.jsp" %>
 		<div class="container_ad col-sm-9 float-right">
-			<h1>상품리스트 페이지입니다.</h1>
+			<div>
+				<p class="mt-t10">FLIA ADMIN PAGE</p>
+				<h1 class="ad_page_in">관리자 페이지 - 상품리스트</h1>
+			</div>
+			<hr>
 			<table class="table">
 				<thead class="thead-dark">
 					<tr>

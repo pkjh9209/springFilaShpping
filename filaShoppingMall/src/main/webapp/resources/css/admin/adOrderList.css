@@ -1,0 +1,24 @@
+.pdt_img{
+	width: 130px;
+}
+.detailInfo{
+	width: 100%;
+	padding: 15px;
+}
+.info_tt{
+	display:inline-block;
+	width: 100px;
+	margin: 5px 0;
+}
+.order_tt{
+	width: 100%;
+	background-color: #343a40;
+}
+.order_tt p{
+	color:#fff;
+	padding: 15px 10px;
+	font-weight: 600;
+}
+.btn{
+    margin-top: 10px;
+}
